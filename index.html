@@ -109,7 +109,7 @@
         disabled="disabled">
       <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')" class="downloadBtn"
         disabled="disabled">
-      <input type="button" value="最新固件下载" onclick="checkfirmware()">
+      <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
     </div>
   </form>
   <p class="second">检测工具版本 v1.0.1</p>
@@ -164,8 +164,24 @@
     }
 
     // 下载最新固件
-    function checkfirmware() {
-      window.open('https://archive.org/download/nintendo-switch-global-firmwares/');
+    function downloadfirmware() {
+      // 发送 GET 请求以获取仓库信息和资产信息
+      axios.get("https://api.github.com/repos/THZoria/NX_Firmware/releases/latest")
+        .then(response => {
+          // 获取最新版本中的第一个资产（即软件包文件）
+          const asset = response.data.assets[0];
+          // 获取最新版本字符串
+          const version = response.data.tag_name;
+          // 获取经过代理处理后的下载地址
+          const downloadUrl = `https://ghproxy.com/${asset.browser_download_url}`;
+          // 弹出对话框提示，显示最新版本信息，让用户确认下载
+          if (confirm(`当前最新固件为 ${version}，是否下载？`)) {
+            window.open(downloadUrl); // 下载最新固件
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
   </script>
 </body>
