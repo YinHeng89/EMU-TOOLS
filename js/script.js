@@ -1,10 +1,3 @@
-var _hmt = _hmt || [];
-(function () {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d27c614c832ad02820e351ab160f1ad8";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
 
 // 显示当前版本号
 var currentVersion = "EA-3556";
