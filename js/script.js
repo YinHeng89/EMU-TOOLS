@@ -1,26 +1,19 @@
 
 // 显示当前版本号
-var currentVersion = "EA-3556";
-document.getElementById("version").value = currentVersion;
-var latestVersion = ""
+// var currentVersion = "EA-3556";
+// document.getElementById("version").value = currentVersion;
+// var latestVersion = ""
 
 // 检测最新版本
 function checkVersion() {
-  let currentVersion = document.getElementById("version").value;
   axios.get("https://api.github.com/repos/pineappleEA/pineapple-src/releases/latest")
     .then(function (response) {
       latestVersion = response.data.tag_name;
       let downBtnEls = document.getElementsByClassName("downloadBtn");
-      if (latestVersion !== currentVersion) {
-        alert("当前版本不是最新版本，请下载最新版！最新版本号为：" + latestVersion);
-        for (let i = 0; i < downBtnEls.length; i++) {
-          downBtnEls[i].removeAttribute("disabled");
-        }
-      } else {
-        for (let i = 0; i < downBtnEls.length; i++) {
-          downBtnEls[i].setAttribute("disabled", "disabled");
-        }
-        alert("当前已是最新版本！");
+      alert("当前最新版本号为：" + latestVersion);
+      document.getElementById("latestVersion").innerText = latestVersion
+      for (let i = 0; i < downBtnEls.length; i++) {
+        downBtnEls[i].removeAttribute("disabled");
       }
     })
     .catch(function (error) {
