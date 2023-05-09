@@ -20,9 +20,10 @@
   <h1>Yuzu-EA 模拟器版本检测下载工具</h1>
   <p>请点击下方按钮检测当前版本并下载最新版本。</p>
   <form>
-    <label for="version">输入当前版本号，留空则自动检测最新版本：</label>
+    <!-- <label for="version">输入当前版本号，留空则自动检测最新版本：</label> -->
     <div>
-      <input type="text" id="version" name="version">
+      <!-- <input type="text" id="version" name="version"> -->
+      <label id="version">当前最新版本号为： <span id="latestVersion">-----</span></label>
       <input type="button" value="检测更新" onclick="checkVersion()">
     </div>
     <div>
