@@ -28,15 +28,15 @@
     </div>
     <div>
       <input type="button" value="下载最新版(Windows)"
-        onclick="if (latestVersion !== currentVersion) downloadLatest('Windows')" class="downloadBtn"
-        disabled="disabled">
-      <input type="button" value="下载最新版(Linux)" onclick="if (latestVersion !== currentVersion) downloadLatest('Linux')"
-        class="downloadBtn" disabled="disabled">
+      onclick="downloadLatest('Windows')" class="downloadBtn"
+      disabled="disabled">
+    <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')"
+      class="downloadBtn" disabled="disabled">
 
       <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
     </div>
   </form>
-  <p class="second">当前工具版本 v1.0.2 <a href="./update.html" target="_blank">查看更新记录</a></p>
+  <p class="second">当前工具版本 v1.0.2.1 <a href="./update.html" target="_blank">查看更新记录</a></p>
   <script src="./js/script.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
