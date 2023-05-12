@@ -16,7 +16,6 @@
 </head>
 
 <body>
-  <div class="page-bg"></div>
   <h1>Yuzu-EA 模拟器版本检测下载工具</h1>
   <p>请点击下方按钮检测当前版本并下载最新版本。</p>
   <form>
@@ -27,11 +26,10 @@
       <input type="button" value="检测更新" onclick="checkVersion()">
     </div>
     <div>
-      <input type="button" value="下载最新版(Windows)"
-      onclick="downloadLatest('Windows')" class="downloadBtn"
-      disabled="disabled">
-    <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')"
-      class="downloadBtn" disabled="disabled">
+      <input type="button" value="下载最新版(Windows)" onclick="downloadLatest('Windows')" class="downloadBtn"
+        disabled="disabled">
+      <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')" class="downloadBtn"
+        disabled="disabled">
 
       <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
     </div>

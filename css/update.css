@@ -2,7 +2,8 @@
 
 div.page-bg {
   background-attachment: fixed;
-  background-image: url('../images/bg.png');
+  /* background-image: url('../images/bg.png'); */
+  color: #eef1f5;
   background-size: cover;
   background-repeat: no-repeat;
   position: fixed;
@@ -15,17 +16,27 @@ div.page-bg {
 }
 
 body {
-  background-color: #eee;
+  background-color: #eef1f5;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 97vh;
+  font-family: "My Custom Font", sans-serif;
 }
 
-.page-border{
+@font-face {
+  font-family: "My Custom Font";
+  src: url("/fonts/font.ttf") format("truetype");
+}
+
+li {
+  font-family: "My Custom Font", sans-serif;
+}
+
+.page-border {
   border: 25px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 30px 5px 30px 5px;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
 }
 
