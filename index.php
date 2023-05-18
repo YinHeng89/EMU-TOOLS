@@ -62,7 +62,7 @@
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
         <?php // 记录访问 IP 地址的数量并显示当前访问 IP 地址
         $user_ip = $_SERVER["REMOTE_ADDR"];
-        echo "当前访问IP地址是：" . $user_ip . "<br>";
+        echo "当前访问IP地址:" . $user_ip . "<br>";
 
         // 连接到 MySQL 数据库
         $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz_34231135_mywebsite");
