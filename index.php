@@ -15,8 +15,10 @@ if ($num_rows == 0) {
     // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
     $row = mysqli_fetch_assoc($result);
     $visit_count = $row["visit_count"] + 1;
+    mysqli_data_seek($result, 0);
     mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE ip_address='$user_ip'");
 }
+
 
 // 统计访问 IP 数量并输出结果
 $count_result = mysqli_query($conn, "SELECT COUNT(DISTINCT ip_address) AS total_ips FROM visitor_ips");
