@@ -36,9 +36,6 @@ form {
     padding-right: 20px;
 }
 
-.menu-list {
-}
-
 .menu-list li {
     padding: 10px;
     border-radius: 40px;
@@ -136,6 +133,8 @@ h1 {
     transform: translateX(-50%);
     /* 将元素水平居中 */
     color: rgba(97, 97, 97, 0.8);
+    width: 800px; /* 指定宽度为200像素 */
+    text-align: center; /* 水平居中 */
   }
   
   /* 更改超级链接颜色 */
