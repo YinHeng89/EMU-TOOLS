@@ -61,7 +61,7 @@
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
         <?php // 与服务器连接
-        $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "mywebsite");
+        $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz_34231135_mywebsite");
 
         // 从数据库获取当前的访问量
         $result = mysqli_query($conn, "SELECT count FROM visit_counter WHERE id=1");
