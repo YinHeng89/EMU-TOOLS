@@ -86,7 +86,6 @@
         $count_row = mysqli_fetch_assoc($count_result);
         $total_ips = $count_row["total_ips"];
         echo "总共有 " . $total_ips . " 个不同的IP地址访问了本站。";
-
         ?>
     </p>
     <script src="./js/main.js"></script>
