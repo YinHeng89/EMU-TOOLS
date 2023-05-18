@@ -60,28 +60,33 @@
         </div>
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
-        <?php // 与服务器连接
+        <?php // 记录访问 IP 地址的数量并显示当前访问 IP 地址
+        $user_ip = $_SERVER["REMOTE_ADDR"];
+        echo "您当前的IP地址是:" . $user_ip . "<br>";
+
+        // 连接到 MySQL 数据库
         $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz_34231135_mywebsite");
 
-        // 从数据库获取当前的访问量
-        $result = mysqli_query($conn, "SELECT count FROM visit_counter WHERE id=1");
-        $row = mysqli_fetch_assoc($result);
-        $count = $row['count'];
+        // 检查并记录用户 IP 地址是否已经存在于数据库中
+        $result = mysqli_query($conn, "SELECT * FROM visitor_ips WHERE ip_address='$user_ip'");
+        $num_rows = mysqli_num_rows($result);
 
-        // 如果数据库没有访问量记录，则初始化为0
-        if (!$count) {
-            mysqli_query($conn, "INSERT INTO visit_counter (id, count) VALUES (1, 0)");
+        if ($num_rows == 0) {
+            // 如果用户 IP 地址不存在于数据库中，则添加一条新的记录
+            mysqli_query($conn, "INSERT INTO visitor_ips (`ip_address`, `visit_count`) VALUES ('$user_ip', 1)");
+        } else {
+            // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
+            $row = mysqli_fetch_assoc($result);
+            $visit_count = $row["visit_count"] + 1;
+            mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE ip_address='$user_ip'");
         }
 
-        // 增加访问量并更新到数据库中
-        $count++;
-        mysqli_query($conn, "UPDATE visit_counter SET count=" . $count . " WHERE id=1");
+        // 统计访问 IP 数量并输出结果
+        $count_result = mysqli_query($conn, "SELECT COUNT(DISTINCT ip_address) AS total_ips FROM visitor_ips");
+        $count_row = mysqli_fetch_assoc($count_result);
+        $total_ips = $count_row["total_ips"];
+        echo "总共有 " . $total_ips . " 个不同的IP地址访问了本站。";
 
-        // 显示访问量
-        echo "本站已有" . $count . "人次访问过！";
-
-        // 关闭数据库连接
-        mysqli_close($conn);
         ?>
     </p>
     <script src="./js/main.js"></script>
