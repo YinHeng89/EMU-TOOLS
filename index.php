@@ -8,21 +8,25 @@ $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz
 $result = mysqli_query($conn, "SELECT * FROM visitor_ips WHERE ip_address='$user_ip'");
 $num_rows = mysqli_num_rows($result);
 
+function generateUuid()
+{
+    $data = random_bytes(16);
+    $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100
+    $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
+    return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+}
+
 if ($num_rows == 0) {
     // 如果用户 IP 地址不存在于数据库中，则添加一条新的记录
-    // 获取当前时间的毫秒数
-    $milliseconds = round(microtime(true) * 1000);
-    // 获取毫秒数的后8位数字
-    $last8digits = substr($milliseconds, -8);
-    $now_id = $last8digits;
-    mysqli_query($conn, "INSERT INTO visitor_ips (`id`,`ip_address`, `visit_count`) VALUES ('$now_id' '$user_ip', 1)");
+    $now_id = generateUuid();
+    mysqli_query($conn, "INSERT INTO visitor_ips (`id`,`ip_address`, `visit_count`) VALUES ('$now_id','$user_ip', 1)");
 } else {
     // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
     $row = mysqli_fetch_assoc($result);
     $visit_count = $row["visit_count"] + 1;
     $id = $row["id"];
     mysqli_data_seek($result, 0);
-    mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE id='$id'");
+    mysqli_query($conn, "UPDATE visitor_ips SET visit_count='$visit_count' WHERE id='$id'");
 }
 
 
