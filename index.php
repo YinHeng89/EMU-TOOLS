@@ -62,34 +62,30 @@
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
         <?php // 记录访问 IP 地址的数量并显示当前访问 IP 地址
         $user_ip = $_SERVER["REMOTE_ADDR"];
-        echo "您当前的IP地址是:" . $user_ip . "<br>";
+        echo "当前访问IP地址是：" . $user_ip . "<br>";
 
         // 连接到 MySQL 数据库
         $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz_34231135_mywebsite");
 
-        // 获取用户IP地址
-        $user_ip = $_SERVER["REMOTE_ADDR"];
-
-        // 检查并记录用户IP地址是否已经存在于数据库中
+        // 检查并记录用户 IP 地址是否已经存在于数据库中
         $result = mysqli_query($conn, "SELECT * FROM visitor_ips WHERE ip_address='$user_ip'");
         $num_rows = mysqli_num_rows($result);
 
         if ($num_rows == 0) {
-            // 如果用户IP地址不存在于数据库中，则添加一条新的记录
-            mysqli_query($conn, "INSERT INTO `visitor_ips` (`ip_address`, `visit_count`) VALUES ('$user_ip', 1)");
+            // 如果用户 IP 地址不存在于数据库中，则添加一条新的记录
+            mysqli_query($conn, "INSERT INTO visitor_ips (`ip_address`, `visit_count`) VALUES ('$user_ip', 1)");
         } else {
-            // 如果用户IP地址已经存在于数据库中，则更新其访问次数
+            // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
             $row = mysqli_fetch_assoc($result);
             $visit_count = $row["visit_count"] + 1;
-            mysqli_query($conn, "UPDATE `visitor_ips` SET `visit_count`=$visit_count WHERE `ip_address`='$user_ip'");
+            mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE ip_address='$user_ip'");
         }
 
-        // 统计访问IP数量
+        // 统计访问 IP 数量并输出结果
         $count_result = mysqli_query($conn, "SELECT COUNT(DISTINCT ip_address) AS total_ips FROM visitor_ips");
         $count_row = mysqli_fetch_assoc($count_result);
         $total_ips = $count_row["total_ips"];
-        echo "总共有 " . $total_ips . " 个不同的IP地址访问了本站。";
-
+        echo "本站累计访问次数 " . $total_ips . " 次";
         ?>
     </p>
     <script src="./js/main.js"></script>
