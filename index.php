@@ -84,8 +84,7 @@
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
     <?php
-        echo "当前访问IP地址:" . $user_ip . ;
-        echo "本站累计访问次数 " . $total_ips . " 次";
+        echo "当前访问IP地址:" . $user_ip ."，本站累计访问次数" . $total_ips . " 次";
     ?>
     </p>
     <script src="./js/main.js"></script>
