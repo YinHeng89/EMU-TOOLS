@@ -59,7 +59,31 @@
             </div>
         </div>
     </form>
-    <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a></p>
+    <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
+        <?php // 与服务器连接
+        $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "mywebsite");
+
+        // 从数据库获取当前的访问量
+        $result = mysqli_query($conn, "SELECT count FROM visit_counter WHERE id=1");
+        $row = mysqli_fetch_assoc($result);
+        $count = $row['count'];
+
+        // 如果数据库没有访问量记录，则初始化为0
+        if (!$count) {
+            mysqli_query($conn, "INSERT INTO visit_counter (id, count) VALUES (1, 0)");
+        }
+
+        // 增加访问量并更新到数据库中
+        $count++;
+        mysqli_query($conn, "UPDATE visit_counter SET count=" . $count . " WHERE id=1");
+
+        // 显示访问量
+        echo "本站已有" . $count . "人次访问过！";
+
+        // 关闭数据库连接
+        mysqli_close($conn);
+        ?>
+    </p>
     <script src="./js/main.js"></script>
     <script src="./js/script.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
