@@ -10,13 +10,19 @@ $num_rows = mysqli_num_rows($result);
 
 if ($num_rows == 0) {
     // 如果用户 IP 地址不存在于数据库中，则添加一条新的记录
-    mysqli_query($conn, "INSERT INTO visitor_ips (`ip_address`, `visit_count`) VALUES ('$user_ip', 1)");
+    // 获取当前时间的毫秒数
+    $milliseconds = round(microtime(true) * 1000);
+    // 获取毫秒数的后8位数字
+    $last8digits = substr($milliseconds, -8);
+    $now_id = $last8digits;
+    mysqli_query($conn, "INSERT INTO visitor_ips (`id`,`ip_address`, `visit_count`) VALUES ('$now_id' '$user_ip', 1)");
 } else {
     // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
     $row = mysqli_fetch_assoc($result);
     $visit_count = $row["visit_count"] + 1;
+    $id = $row["id"];
     mysqli_data_seek($result, 0);
-    mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE ip_address='$user_ip'");
+    mysqli_query($conn, "UPDATE visitor_ips SET visit_count=$visit_count WHERE id='$id'");
 }
 
 
