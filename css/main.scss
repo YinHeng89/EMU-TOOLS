@@ -1,254 +1,312 @@
-@charset "UTF-8";
+/*
+ * 设置文件编码格式
+ */
+ @charset "UTF-8";
 
-@font-face {
-  font-family: "My Custom Font";
-  src: url("/fonts/font.ttf") format("truetype");
-}
-
-
-body {
-  background-color: #eef1f5;
-  font-family: "My Custom Font", sans-serif;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  margin: 50px auto;
-  padding: 30px;
-  padding-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.1);
-  width: 1000px;
-  height: 550px;
-  background-color: rgba(255, 255, 255);
-  backdrop-filter: blur(10px);
-}
-
-.menu {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  float: left;
-}
-
-.menu-title {
-  padding-right: 20px;
-  font-size: 20px;
-  display: flex;
-
-  img {
-    padding-right: 20px;
-  }
-}
-
-.menu-list {
-  li {
-    padding: 10px;
-    border-radius: 40px;
-    background-color: #edf3fc;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 25px;
-    text-decoration: none;
-
-    &:hover {
-      padding: 10px;
-      border-radius: 40px;
-      background-color: #e3eeff;
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 25px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-
-      a {
-        text-decoration: none;
-        color: #1d7dcc;
-        background-color: #e3eeff;
-        transition: background-color 0.3s ease;
-      }
-    }
-
-    a {
-      text-decoration: none;
-      display: inline-block;
-      color: #3c566c;
-      width: 100%;
-      height: 100%;
-    }
-
-    &.second {
-      padding: 10px;
-      border-radius: 40px;
-      background-color: #ffffff;
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 25px;
-
-      &:hover {
-        padding: 10px;
-        border-radius: 40px;
-        background-color: #edf3fc;
-        font-size: 16px;
-        text-align: center;
-        margin-bottom: 25px;
-        transition: background-color 0.3s ease;
-
-        a {
-          text-decoration: none;
-          color: #1d7dcc;
-          background-color: #edf3fc;
-          transition: background-color 0.3s ease;
-        }
-      }
-    }
-  }
-}
-
-.main {
-  min-width: 0px;
-  font-size: 16px;
-  padding: 24px 24px 48px 32px;
-  height: 100%;
-  border-left: 2px solid #eef1f5;
-  overflow-y: overlay !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  padding-top: 50px;
-}
-
-.box1 {
-  background-color: rgb(25, 119, 173);
-  padding: 5px;
-  border-radius: 4px;
-}
-
-h1 {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 36px;
-}
-
-p {
-  margin: 20px 50px;
-  text-align: center;
-
-  &.second {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(97, 97, 97, 0.8);
-    width: 800px;
-    text-align: center;
-  }
-}
-
-a {
-  color: rgba(97, 97, 97, 0.8);
-  opacity: 0.8;
-}
-
-label {
-  margin-bottom: 20px;
-  font-weight: normal;
-  color: #666666;
-  text-align: center;
-  padding-right: 60px;
-  background-color: #ebebeb;
-  border-radius: 20px;
-  padding: 10px 20px;
-}
-
-input[type="text"] {
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: #333333;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 40px;
-  text-align: center;
-  width: 200px;
-}
-
-div {
-  padding-block: 10px;
-
-  &.page-bg {
-    background-attachment: fixed;
-    background-image: url('../images/bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(0px);
-  }
-}
-
-input[type="text"]:focus {
-  border-color: rgb(0, 123, 255);
-  outline: none;
-  box-shadow: 0 0 5px rgb(0, 123, 255);
-}
-
-input[type="button"] {
-  margin-bottom: 15px;
-  margin-inline: 5px;
-  background-color: #0ea5e9;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 40px;
-  font-family: "My Custom Font", sans-serif;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-input[type="button"]:hover {
-  background-color: #1c96d8;
-}
-
-input[type="button"][disabled],
-button[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-input[type="button"][disabled].downloadBtn,
-button[disabled].downloadBtn {
-  background-color: #ddd;
-  color: #333333;
-}
-
-button,
-input[type="button"],
-a {
-  cursor: pointer;
-}
-
-input[type="submit"],
-input[type="reset"] {
-  padding: 10px 20px;
-  margin: 20px 0 0;
-  font-size: 18px;
-  color: #ffffff;
-  background-color: #428bca;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-  background-color: #3071a9;
-}
+ /*
+  * 引入自定义字体
+  */
+ @font-face {
+   font-family: "My Custom Font";
+   src: url("/fonts/font.ttf") format("truetype");
+ }
+ 
+ /*
+  * 设置全局样式
+  */
+ body {
+   background-color: #eef1f5;
+   font-family: "My Custom Font", sans-serif;
+ }
+ 
+ /*
+  * 设置表单样式
+  */
+ form {
+   display: flex;
+   flex-direction: column;
+   margin: 50px auto;
+   padding: 30px;
+   padding-top: 20px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.1);
+   width: 1000px;
+   height: 550px;
+   background-color: rgba(255, 255, 255);
+   backdrop-filter: blur(10px);
+ }
+ 
+ /*
+  * 设置左侧菜单栏样式
+  */
+ .menu {
+   padding: 24px;
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   float: left;
+ }
+ 
+ /*
+  * 设置左侧菜单栏标题样式
+  */
+ .menu-title {
+   padding-right: 20px;
+   font-size: 20px;
+   display: flex;
+ 
+   /*
+    * 设置左侧菜单栏标题图标样式
+    */
+   img {
+     padding-right: 20px;
+   }
+ }
+ 
+ /*
+  * 设置左侧菜单栏列表样式
+  */
+ .menu-list {
+   li a {
+     text-decoration: none;
+     display: block;
+     color: #3c566c;
+     background-color: #edf3fc;
+     padding: 10px;
+     border-radius: 40px;
+     font-size: 16px;
+     text-align: center;
+     margin-bottom: 25px;
+ 
+     /*
+      * 设置鼠标悬停样式
+      */
+     &:hover {
+       padding: 10px;
+       border-radius: 40px;
+       background-color: #e3eeff;
+       color: #1d7dcc;
+       font-size: 16px;
+       text-align: center;
+       margin-bottom: 25px;
+       transition: background-color 0.3s ease;
+     }
+   }
+ 
+   li a {
+     /*
+      * 设置第二个菜单项样式
+      */
+     &.second {
+       background-color: #ffffff;
+ 
+       /*
+        * 设置鼠标悬停样式
+        */
+       &:hover {
+         background-color: #e3eeff;
+         color: #1d7dcc;
+       }
+     }
+   }
+ }
+ 
+ /*
+  * 设置主内容区样式
+  */
+ .main {
+   min-width: 0px;
+   font-size: 16px;
+   padding: 24px 24px 48px 32px;
+   height: 100%;
+   border-left: 2px solid #eef1f5;
+   overflow-y: overlay !important;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 30px;
+   padding-top: 50px;
+ }
+ 
+ /*
+  * 设置方块1样式
+  */
+ .box1 {
+   background-color: rgb(25, 119, 173);
+   padding: 5px;
+   border-radius: 4px;
+ }
+ 
+ /*
+  * 设置h1标题样式
+  */
+ h1 {
+   margin-top: 50px;
+   text-align: center;
+   font-size: 36px;
+ }
+ 
+ /*
+  * 设置p样式
+  */
+ p {
+   margin: 20px 50px;
+   text-align: center;
+ 
+   /*
+    * 设置第二个p样式
+    */
+   &.second {
+     position: fixed;
+     bottom: 10px;
+     left: 50%;
+     transform: translateX(-50%);
+     color: rgba(97, 97, 97, 0.8);
+     width: 800px;
+     text-align: center;
+   }
+ }
+ 
+ /*
+  * 设置链接样式
+  */
+ a {
+   color: rgba(97, 97, 97, 0.8);
+   opacity: 0.8;
+ }
+ 
+ /*
+  * 设置表单标签样式
+  */
+ label {
+   margin-bottom: 20px;
+   font-weight: normal;
+   color: #666666;
+   text-align: center;
+   padding-right: 60px;
+   background-color: #ebebeb;
+   border-radius: 20px;
+   padding: 10px 20px;
+ }
+ 
+ /*
+  * 设置文本输入框样式
+  */
+ input[type="text"] {
+   padding: 10px 20px;
+   margin-bottom: 20px;
+   font-size: 16px;
+   color: #333333;
+   background-color: #f0f0f0;
+   border: none;
+   border-radius: 40px;
+   text-align: center;
+   width: 200px;
+ }
+ 
+ /*
+  * 设置背景样式
+  */
+ div {
+   padding-block: 10px;
+ 
+   /*
+    * 设置背景图片样式
+    */
+   &.page-bg {
+     background-attachment: fixed;
+     background-image: url('../images/bg.png');
+     background-size: cover;
+     background-repeat: no-repeat;
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     z-index: -1;
+     filter: blur(0px);
+   }
+ }
+ 
+ /*
+  * 设置文本输入框聚焦样式
+  */
+ input[type="text"]:focus {
+   border-color: rgb(0, 123, 255);
+   outline: none;
+   box-shadow: 0 0 5px rgb(0, 123, 255);
+ }
+ 
+ /*
+  * 设置普通按钮样式
+  */
+ input[type="button"] {
+   margin-bottom: 15px;
+   margin-inline: 5px;
+   background-color: #0ea5e9;
+   color: #fff;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 40px;
+   font-family: "My Custom Font", sans-serif;
+   font-size: 16px;
+   transition: background-color 0.3s ease;
+ }
+ 
+ /*
+  * 设置鼠标悬停样式
+  */
+ input[type="button"]:hover {
+   background-color: #1c96d8;
+ }
+ 
+ /*
+  * 设置禁用状态下的按钮样式
+  */
+ input[type="button"][disabled],
+ button[disabled] {
+   opacity: 0.5;
+   cursor: not-allowed;
+ }
+ 
+ /*
+  * 设置禁用状态下的下载按钮样式
+  */
+ input[type="button"][disabled].downloadBtn,
+ button[disabled].downloadBtn {
+   background-color: #ddd;
+   color: #333333;
+ }
+ 
+ /*
+  * 设置按钮、链接的鼠标样式
+  */
+ button,
+ input[type="button"],
+ a {
+   cursor: pointer;
+ }
+ 
+ /*
+  * 设置提交按钮、重置按钮样式
+  */
+ input[type="submit"],
+ input[type="reset"] {
+   padding: 10px 20px;
+   margin: 20px 0 0;
+   font-size: 18px;
+   color: #ffffff;
+   background-color: #428bca;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+ }
+ 
+ /*
+  * 设置提交按钮、重置按钮鼠标悬停样式
+  */
+ input[type="submit"]:hover,
+ input[type="reset"]:hover {
+   background-color: #3071a9;
+ }

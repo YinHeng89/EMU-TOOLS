@@ -1,12 +1,25 @@
+@charset "UTF-8";
+/*
+ * 设置文件编码格式
+ */
+/*
+ * 引入自定义字体
+ */
 @font-face {
   font-family: "My Custom Font";
   src: url("/fonts/font.ttf") format("truetype");
 }
+/*
+ * 设置全局样式
+ */
 body {
   background-color: #eef1f5;
   font-family: "My Custom Font", sans-serif;
 }
 
+/*
+ * 设置表单样式
+ */
 form {
   display: flex;
   flex-direction: column;
@@ -22,6 +35,9 @@ form {
           backdrop-filter: blur(10px);
 }
 
+/*
+ * 设置左侧菜单栏样式
+ */
 .menu {
   padding: 24px;
   display: flex;
@@ -30,71 +46,67 @@ form {
   float: left;
 }
 
+/*
+ * 设置左侧菜单栏标题样式
+ */
 .menu-title {
   padding-right: 20px;
   font-size: 20px;
   display: flex;
+  /*
+   * 设置左侧菜单栏标题图标样式
+   */
 }
 .menu-title img {
   padding-right: 20px;
 }
 
-.menu-list li {
-  padding: 10px;
-  border-radius: 40px;
+/*
+ * 设置左侧菜单栏列表样式
+ */
+.menu-list li a {
+  text-decoration: none;
+  display: block;
+  color: #3c566c;
   background-color: #edf3fc;
+  padding: 10px;
+  border-radius: 40px;
   font-size: 16px;
   text-align: center;
   margin-bottom: 25px;
-  text-decoration: none;
+  /*
+   * 设置鼠标悬停样式
+   */
 }
-.menu-list li:hover {
+.menu-list li a:hover {
   padding: 10px;
   border-radius: 40px;
   background-color: #e3eeff;
+  color: #1d7dcc;
   font-size: 16px;
   text-align: center;
   margin-bottom: 25px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-.menu-list li:hover a {
-  text-decoration: none;
-  color: #1d7dcc;
-  background-color: #e3eeff;
   transition: background-color 0.3s ease;
 }
 .menu-list li a {
-  text-decoration: none;
-  display: inline-block;
-  color: #3c566c;
-  width: 100%;
-  height: 100%;
+  /*
+   * 设置第二个菜单项样式
+   */
 }
-.menu-list li.second {
-  padding: 10px;
-  border-radius: 40px;
+.menu-list li a.second {
   background-color: #ffffff;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 25px;
+  /*
+   * 设置鼠标悬停样式
+   */
 }
-.menu-list li.second:hover {
-  padding: 10px;
-  border-radius: 40px;
-  background-color: #edf3fc;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 25px;
-  transition: background-color 0.3s ease;
-}
-.menu-list li.second:hover a {
-  text-decoration: none;
+.menu-list li a.second:hover {
+  background-color: #e3eeff;
   color: #1d7dcc;
-  background-color: #edf3fc;
-  transition: background-color 0.3s ease;
 }
 
+/*
+ * 设置主内容区样式
+ */
 .main {
   min-width: 0px;
   font-size: 16px;
@@ -109,21 +121,33 @@ form {
   padding-top: 50px;
 }
 
+/*
+ * 设置方块1样式
+ */
 .box1 {
   background-color: rgb(25, 119, 173);
   padding: 5px;
   border-radius: 4px;
 }
 
+/*
+ * 设置h1标题样式
+ */
 h1 {
   margin-top: 50px;
   text-align: center;
   font-size: 36px;
 }
 
+/*
+ * 设置p样式
+ */
 p {
   margin: 20px 50px;
   text-align: center;
+  /*
+   * 设置第二个p样式
+   */
 }
 p.second {
   position: fixed;
@@ -135,11 +159,17 @@ p.second {
   text-align: center;
 }
 
+/*
+ * 设置链接样式
+ */
 a {
   color: rgba(97, 97, 97, 0.8);
   opacity: 0.8;
 }
 
+/*
+ * 设置表单标签样式
+ */
 label {
   margin-bottom: 20px;
   font-weight: normal;
@@ -151,6 +181,9 @@ label {
   padding: 10px 20px;
 }
 
+/*
+ * 设置文本输入框样式
+ */
 input[type=text] {
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -163,8 +196,14 @@ input[type=text] {
   width: 200px;
 }
 
+/*
+ * 设置背景样式
+ */
 div {
   padding-block: 10px;
+  /*
+   * 设置背景图片样式
+   */
 }
 div.page-bg {
   background-attachment: fixed;
@@ -180,12 +219,18 @@ div.page-bg {
   filter: blur(0px);
 }
 
+/*
+ * 设置文本输入框聚焦样式
+ */
 input[type=text]:focus {
   border-color: rgb(0, 123, 255);
   outline: none;
   box-shadow: 0 0 5px rgb(0, 123, 255);
 }
 
+/*
+ * 设置普通按钮样式
+ */
 input[type=button] {
   margin-bottom: 15px;
   margin-inline: 5px;
@@ -199,28 +244,43 @@ input[type=button] {
   transition: background-color 0.3s ease;
 }
 
+/*
+ * 设置鼠标悬停样式
+ */
 input[type=button]:hover {
   background-color: #1c96d8;
 }
 
+/*
+ * 设置禁用状态下的按钮样式
+ */
 input[type=button][disabled],
 button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
+/*
+ * 设置禁用状态下的下载按钮样式
+ */
 input[type=button][disabled].downloadBtn,
 button[disabled].downloadBtn {
   background-color: #ddd;
   color: #333333;
 }
 
+/*
+ * 设置按钮、链接的鼠标样式
+ */
 button,
 input[type=button],
 a {
   cursor: pointer;
 }
 
+/*
+ * 设置提交按钮、重置按钮样式
+ */
 input[type=submit],
 input[type=reset] {
   padding: 10px 20px;
@@ -234,6 +294,9 @@ input[type=reset] {
   transition: background-color 0.3s ease;
 }
 
+/*
+ * 设置提交按钮、重置按钮鼠标悬停样式
+ */
 input[type=submit]:hover,
 input[type=reset]:hover {
   background-color: #3071a9;
