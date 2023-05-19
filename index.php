@@ -105,6 +105,3 @@ $total_ips = $count_row["total_ips"];
 </body>
 
 </html>
-<?php
-// 写完 PHP 代码
-?>
