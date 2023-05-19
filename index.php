@@ -3,6 +3,35 @@ $user_ip = $_SERVER["REMOTE_ADDR"];
 
 // 连接到 MySQL 数据库
 $conn = mysqli_connect("sql304.epizy.com", "epiz_34231135", "j9ajpUMsY3k", "epiz_34231135_mywebsite");
+if ($conn->connect_error) {
+    die("连接失败: " . $conn->connect_error);
+}
+
+// 获取今天的日期
+$today = date('Y-m-d');
+
+// 查询今日访问次数
+$sql = "SELECT COUNT(*) as count FROM visitor_ips WHERE DATE(date) = '$today'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $today_visits = $row['count'];
+}
+
+// 从数据库获取当前的访问量
+$result = mysqli_query($conn, "SELECT count FROM visit_counter WHERE id=1");
+$row = mysqli_fetch_assoc($result);
+$count = $row['count'];
+
+// 如果数据库没有访问量记录，则初始化为0
+if (!$count) {
+    mysqli_query($conn, "INSERT INTO visit_counter (id, count) VALUES (1, 0)");
+}
+
+// 增加访问量并更新到数据库中
+$count++;
+mysqli_query($conn, "UPDATE visit_counter SET count=" . $count . " WHERE id=1");
 
 // 查询当前 IP 地址的记录
 $result = mysqli_query($conn, "SELECT * FROM visitor_ips WHERE ip_address='$user_ip'");
@@ -19,14 +48,14 @@ function generateUuid()
 if ($num_rows == 0) {
     // 如果用户 IP 地址不存在于数据库中，则添加一条新的记录
     $now_id = generateUuid();
-    mysqli_query($conn, "INSERT INTO visitor_ips (`id`,`ip_address`, `visit_count`) VALUES ('$now_id','$user_ip', 1)");
+    mysqli_query($conn, "INSERT INTO visitor_ips (`id`, `date`, `ip_address`, `visit_count`) VALUES ('$now_id','$today','$user_ip', 1)");
 } else {
     // 如果用户 IP 地址已经存在于数据库中，则更新其访问次数
     $row = mysqli_fetch_assoc($result);
     $visit_count = $row["visit_count"] + 1;
     $id = $row["id"];
     mysqli_data_seek($result, 0);
-    mysqli_query($conn, "UPDATE visitor_ips SET visit_count='$visit_count' WHERE id='$id'");
+    mysqli_query($conn, "UPDATE visitor_ips SET visit_count='$visit_count', `date`='$today' WHERE id='$id'");
 }
 
 
@@ -34,6 +63,9 @@ if ($num_rows == 0) {
 $count_result = mysqli_query($conn, "SELECT COUNT(DISTINCT ip_address) AS total_ips FROM visitor_ips");
 $count_row = mysqli_fetch_assoc($count_result);
 $total_ips = $count_row["total_ips"];
+
+// 关闭数据库连接
+$conn->close();
 
 ?>
 <!DOCTYPE html>
@@ -96,7 +128,7 @@ $total_ips = $count_row["total_ips"];
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
         <?php
-        echo "当前访问IP地址 " . $user_ip . "，本站累计访问次数 " . $total_ips . " 次";
+        echo " 今日访问次数 " . $today_visits . "，本站累计访问次数 " . $total_ips . " 次";
         ?>
     </p>
     <script src="./js/main.js"></script>
