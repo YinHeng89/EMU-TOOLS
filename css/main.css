@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
     background-color: #eef1f5;
     font-family: "My Custom Font", sans-serif;
@@ -47,15 +49,19 @@ form {
     text-decoration: none;
 }
 
+.menu-list:hover li {
+  /* hover效果的样式 */
+}
+
 .menu-list li:hover {
     padding: 10px;
     border-radius: 40px;
     background-color: #e3eeff;
-    color: #3c566c;
     font-size: 16px;
     text-align: center;
     margin-bottom: 25px;
     text-decoration: none;
+    color: #1d7dcc;
     transition: background-color 0.3s ease;
 }
 
@@ -63,6 +69,13 @@ form {
     text-decoration: none;
     display: block; /* 使 a 元素填充整个 li 区域，方便点击和鼠标悬停 */
     color: #3c566c;
+}
+
+.menu-list li a:hover {
+  text-decoration: none;
+  display: block; /* 使 a 元素填充整个 li 区域，方便点击和鼠标悬停 */
+  color: #1d7dcc;
+  transition: background-color 0.3s ease;
 }
 
 .menu-list li.second {
