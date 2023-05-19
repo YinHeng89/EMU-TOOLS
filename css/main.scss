@@ -24,7 +24,6 @@
   */
  form {
    display: flex;
-   flex-direction: column;
    margin: 50px auto;
    padding: 30px;
    padding-top: 20px;
@@ -44,7 +43,6 @@
    display: flex;
    flex-direction: column;
    gap: 24px;
-   float: left;
  }
  
  /*
@@ -118,7 +116,6 @@
  .main {
    min-width: 0px;
    font-size: 16px;
-   padding: 24px 24px 48px 32px;
    height: 100%;
    border-left: 2px solid #eef1f5;
    overflow-y: overlay !important;
@@ -127,17 +124,10 @@
    align-items: center;
    padding: 30px;
    padding-top: 50px;
+   flex: 1;
+   box-sizing: border-box;
  }
- 
- /*
-  * 设置方块1样式
-  */
- .box1 {
-   background-color: rgb(25, 119, 173);
-   padding: 5px;
-   border-radius: 4px;
- }
- 
+  
  /*
   * 设置h1标题样式
   */
