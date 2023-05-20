@@ -121,7 +121,7 @@ $conn->close();
                     <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
                 </div>
             </form>
-            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本,所有软件包来源于Github</p>
+            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本,所有软件包来源于<a href="https://github.com/" target="_blank">GitHub</a></p>
         </div>
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
