@@ -10,7 +10,7 @@
 <body>
   <div class="page-bg"></div>
   <div>
-    <h1 class="h2">EMU-Tools Switch模拟器版本在线检测工具</h1>
+    <h1 class="h2">EMU-Tools 模拟器在线更新工具</h1>
 
   <div class="page-border">
     <div class="container">

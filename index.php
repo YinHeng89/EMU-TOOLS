@@ -72,7 +72,7 @@ $conn->close();
 <html>
 
 <head>
-    <title>EMU-Tools Switch模拟器版本在线检测工具</title>
+    <title>EMU-Tools 模拟器在线更新工具</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keyword" content="switch模拟器,steam deck模拟器,模拟器,Yuzu,ryujinx,固件下载" />
@@ -121,7 +121,7 @@ $conn->close();
                     <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
                 </div>
             </form>
-            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本,所有软件包来源于<a href="https://github.com/" target="_blank">GitHub</a></p>
+            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本，所有软件包来源于<a href="https://github.com/" target="_blank">GitHub</a></p>
         </div>
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
