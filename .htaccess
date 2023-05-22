@@ -12,7 +12,8 @@
 DirectoryIndex index.php index.html index.htm index2.html
 
 ErrorDocument 403 https://errors.infinityfree.net/errors/403/
-ErrorDocument 404 https://errors.infinityfree.net/errors/404/
+ErrorDocument 404 https://emu-tools.com/404/
+# ErrorDocument 404 https://errors.infinityfree.net/errors/404/
 ErrorDocument 500 https://errors.infinityfree.net/errors/500/
 
 RewriteEngine On
