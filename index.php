@@ -76,8 +76,8 @@ $conn->close();
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keyword" content="switch模拟器,steam deck模拟器,模拟器,Yuzu,ryujinx,固件下载" />
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/reset.css?v=1">
+    <link rel="stylesheet" href="./css/main.css?v=1">
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <script>
         var _hmt = _hmt || [];
