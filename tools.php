@@ -36,7 +36,7 @@
             </ul>
         </div>
         <div class="main">
-            <h1><a href="https://emu-tools.com/tools/zelda-totk/" target="_parent">王国之泪存档修改器</a></h1>
+            <h1><a style="color: #333;" href="https://emu-tools.com/tools/zelda-totk/" target="_blank">王国之泪存档修改器</a></h1>
         </div>
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
