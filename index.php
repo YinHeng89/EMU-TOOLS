@@ -101,7 +101,7 @@ $conn->close();
                 <li><a href="./index.php" target="_parent">Yuzu模拟器</a></li>
                 <li><a class="second" href="#" target="_parent">ryujinx模拟器</a></li>
                 <li><a class="second" href="#" target="_parent">固件下载</a></li>
-                <li><a class="second" href="#" target="_parent">其他工具</a></li>
+                <li><a class="second" href="./tools.php" target="_parent">其他工具</a></li>
                 <li><a class="second" href="#" target="_parent">工具简介</a></li>
             </ul>
         </div>
