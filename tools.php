@@ -35,15 +35,24 @@
                 <li><a class="second" href="#" target="_parent">工具简介</a></li>
             </ul>
         </div>
-        <div class="main">
-            <h1><a style="color: #333;" href="https://emu-tools.com/tools/zelda-totk/" target="_blank">王国之泪存档修改器</a></h1>
+        <div class="main" style="
+    display: flex;
+    flex-direction: inherit;
+    align-items: flex-start;
+    flex-wrap: wrap;">
+            <a href="https://emu-tools.com/tools/zelda-totk/" target="_blank" style="
+    text-decoration: none;
+"><img src="./images/totk.jpg" height="80px" width="150px" style="padding: 15px 15px 0px 15px;">
+                <div style="text-align: center;color: #333;">王国之泪存档修改 <small>V1.0</small></div>
+            </a>
+            <a href="https://github.com/CryoByte33/steam-deck-utilities" target="_blank" style="
+    text-decoration: none;
+"><img src="./images/cu.jpg" height="80px" width="150px" style="padding: 15px 15px 0px 15px;">
+                <div style="text-align: center;color: #333;">CryoUtilities <small>V2.0</small></div>
+            </a>
         </div>
     </form>
-    <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a>
-        <?php
-        echo " 今日访问次数 " . $today_visits . "，本站累计访问次数 " . $total_ips . " 次";
-        ?>
-    </p>
+    <p class="second">当前工具版本 v1.0.3 <a href="./update.php" target="_blank">查看更新记录</a></p>
     <script src="./js/main.js"></script>
     <script src="./js/script.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
