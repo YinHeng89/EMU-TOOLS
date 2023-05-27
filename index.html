@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<<<<<<< HEAD
     <title>Emu-Tools</title>
     <style>
         body {
@@ -26,6 +27,44 @@
         <h2><a href="https://emu-tools.com/">https://emu-tools.com/</a></h2>
         <h3>请访问新网址进行下载</h3>
     </div>
+=======
+  <title>Yuzu-EA 模拟器版本检测下载工具</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d27c614c832ad02820e351ab160f1ad8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <h1>Yuzu-EA 模拟器版本检测下载工具</h1>
+  <p>请点击下方按钮检测当前版本并下载最新版本。</p>
+  <form>
+    <!-- <label for="version">输入当前版本号，留空则自动检测最新版本：</label> -->
+    <div>
+      <!-- <input type="text" id="version" name="version"> -->
+      <label id="version">当前最新版本号为： <span id="latestVersion">-----</span></label>
+      <input type="button" value="检测更新" onclick="checkVersion()">
+    </div>
+    <div>
+      <input type="button" value="下载最新版(Windows)" onclick="downloadLatest('Windows')" class="downloadBtn"
+        disabled="disabled">
+      <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')" class="downloadBtn"
+        disabled="disabled">
+
+      <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
+    </div>
+  </form>
+  <p class="second">当前工具版本 v1.0.2.1 <a href="./update.html" target="_blank">查看更新记录</a></p>
+  <script src="./js/script.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+>>>>>>> parent of b8ac85c (更新首页)
 </body>
 
 </html>
