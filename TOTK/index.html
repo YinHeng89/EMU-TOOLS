@@ -1,21 +1,447 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>塞尔达：王国之泪在线地图</title>
-    <link rel="stylesheet" href="./css/leaflet.css" />
-    <script src="./js/leaflet.js"></script>
+	<title>塞尔达传说：王国之泪 &ndash;在线存档修改器</title>
+	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content="A savegame editor for The legend of Zelda: Tears of the Kingdom. Alpha version."/>
+	<meta name="keywords" content="html5, savegame, save, editor, hack, exploit, switch, zelda, tears of the kingdom, totk, weapon, durability, modifier, horse, epona, korok, unlocker, dlc, amiibo"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<link rel="shortcut icon" href="./favicon.png"/>
+	<link type="text/css" rel="stylesheet" href="./zelda-totk.css" media="all"/>
+	<script type="text/javascript" src="./savegame-editor.js"></script>
+	<script type="text/javascript" src="./zelda-totk.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.armor.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.equipment.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.horse.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.item.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.korok.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.mappin.js"></script>
+	<script type="text/javascript" src="./zelda-totk.class.compendium.js"></script>
+	<script type="text/javascript" src="./zelda-totk.master.js"></script>
+	<script type="text/javascript"><!--
+		/* service worker */
+		/*var FORCE_HTTPS=true;
+		window.addEventListener('load',function(){
+			if(location.protocol==='http:' && FORCE_HTTPS)
+				location.replace(window.location.href.replace('http:','https:'));
+			else if(location.protocol==='https:' && 'serviceWorker' in navigator)
+				navigator.serviceWorker.register('/savegame-editors/zelda-totk/_cache_service_worker.js', {scope: '/savegame-editors/zelda-totk/'});
+		}, false);*/
+	</script>
 </head>
-
 <body>
-    <div id="lmap" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: white;"></div>
-    <script type="text/javascript">
-        var map = L.map('lmap', { crs: L.CRS.Simple, minZoom: 0, maxZoom: 6, maxNativeZoom: 6 });
-        var opt = { tileSize: L.point(158, 132) };
-        L.tileLayer('tiles/{z}/{x}/{y}.png', opt).addTo(map)
-        map.setView([-66, 79], 4);
-    </script>
-</body>
 
+<!-- HEADER -->
+<div id="header">
+	<div id="header-top">
+		<div class="row wrapper padding-vertical">
+			<h1>塞尔达传说: 王国之泪存档修改器</h1>
+			<div class="six columns text-left"><img src="./assets/logo.png" style="max-width:90%" /></div>
+			<div class="six columns text-right header-buttons">汉化： <a href="https://emu-tools.com" target="_blank" class="author">EMU-Tools</a>
+				<a href="https://github.com/marcrobledo/savegame-editors" target="_blank" class="button"><span class="sprite github"></span> 开发者：Marc Robledo</a>
+				<!-- <a href="https://www.paypal.me/marcrobledo/5" target="_blank" rel="nofollow" class="donate button"><span class="sprite heart"></span> Donate</a> -->
+			</div>
+		</div>
+	</div>
+	<div id="toolbar" class="hidden padding-vertical">
+		<div class="row wrapper">
+			<div class="twelve columns text-center">
+				<button id="tab-button-home" title="首页" class="tab-button active" onclick="showTab('home')"><i class="tab-icon home"></i></button>
+				<button id="tab-button-weapons" title="武器" class="tab-button" onclick="showTab('weapons')"><i class="tab-icon weapons"></i></button>
+				<button id="tab-button-bows" title="弓箭" class="tab-button" onclick="showTab('bows')"><i class="tab-icon bows"></i></button>
+				<button id="tab-button-shields" title="盾牌" class="tab-button" onclick="showTab('shields')"><i class="tab-icon shields"></i></button>
+				<button id="tab-button-armors" title="防具" class="tab-button" onclick="showTab('armors')"><i class="tab-icon clothes"></i></button>
+				<button id="tab-button-materials" title="材料" class="tab-button" onclick="showTab('materials')"><i class="tab-icon materials"></i></button>
+				<button id="tab-button-food" title="料理" class="tab-button" onclick="showTab('food')"><i class="tab-icon food"></i></button>
+				<button id="tab-button-devices" title="左纳乌胶囊" class="tab-button" onclick="showTab('devices')"><i class="tab-icon devices"></i></button>
+				<button id="tab-button-key" title="重要物品" class="tab-button" onclick="showTab('key')"><i class="tab-icon other"></i></button>
+				<button id="tab-button-horses" title="马匹" class="tab-button" onclick="showTab('horses')"><i class="tab-icon horses"></i></button>
+				<button id="tab-button-master" title="地图进度" class="tab-button" onclick="showTab('master')"><i class="tab-icon master"></i></button>
+				| <button class="button with-icon icon3" onclick="closeFile()">关闭文件</button>
+				<button class="button colored blue with-icon icon9" onclick="saveChanges()">保存修改</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- THE EDITOR -->
+<div id="the-editor" class="wrapper hidden">
+	<!-- DEBUG -->
+	<div id="debug"></div>
+	
+	<!-- TAB: HOME -->
+	<div id="tab-home">
+		<!-- RUPEES -->
+		<h3 class="border-red">状态</h3>
+		<div class="row mb-10">
+			<div class="ten columns"><label>游戏版本</label></div>
+			<div class="two columns text-right"><span id="span-version"></span></div>
+		</div>
+		<div class="row mb-10">
+			<div class="ten columns"><label>游戏时间</label></div>
+			<div class="two columns text-right"><span id="span-playtime"></span></div>
+		</div>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="number-rupees">卢比</label></div>
+			<div class="two columns"><input id="number-rupees" class="full-width" type="text" /></div>
+		</div>
+		<!-- 
+		<div class="row">
+			<div class="ten columns"><label for="number-mons">Mons</label></div>
+			<div class="two columns"><input id="number-mons" class="full-width" type="text" /></div>
+		</div>
+		<div class="row">
+			<div class="ten columns"><label for="number-relic-gerudo">Gerudo relic remaining uses</label></div>
+			<div class="two columns text-right"><input id="number-relic-gerudo" class="small" type="text" /></div>
+		</div>
+		<div class="row">
+			<div class="ten columns"><label for="number-relic-goron">Goron relic remaining uses</label></div>
+			<div class="two columns text-right"><input id="number-relic-goron" class="small" type="text" /></div>
+		</div>
+		<div class="row">
+			<div class="ten columns"><label for="number-relic-rito">Rito relic remaining uses</label></div>
+			<div class="two columns text-right"><input id="number-relic-rito" class="small" type="text" /></div>
+		</div>
+		<div class="row" id="row-motorcycle">
+			<div class="ten columns"><label for="checkbox-motorcycle">Motorcycle</label></div>
+			<div class="two columns text-right"><input id="checkbox-motorcycle" type="checkbox" value="1" /></div>
+		</div>-->
+		<div class="row mb-5">
+			<div class="ten columns"><label for="select-max-hearts">心心</label></div>
+			<div class="two columns">
+				<select id="select-max-hearts" class="full-width">
+					<option value="4">1 颗心</option>
+					<option value="8">2 颗心</option>
+					<option value="12">3 颗心</option>
+					<option value="16">4 颗心</option>
+					<option value="20">5 颗心</option>
+					<option value="24">6 颗心</option>
+					<option value="28">7 颗心</option>
+					<option value="32">8 颗心</option>
+					<option value="36">9 颗心</option>
+					<option value="40">10 颗心</option>
+					<option value="44">11 颗心</option>
+					<option value="48">12 颗心</option>
+					<option value="52">13 颗心</option>
+					<option value="56">14 颗心</option>
+					<option value="60">15 颗心</option>
+					<option value="64">16 颗心</option>
+					<option value="68">17 颗心</option>
+					<option value="72">18 颗心</option>
+					<option value="76">19 颗心</option>
+					<option value="80">20 颗心</option>
+					<option value="84">21 颗心</option>
+					<option value="88">22 颗心</option>
+					<option value="92">23 颗心</option>
+					<option value="96">24 颗心</option>
+					<option value="100">25 颗心</option>
+					<option value="104">26 颗心</option>
+					<option value="108">27 颗心</option>
+					<option value="112">28 颗心</option>
+					<option value="116">29 颗心</option>
+					<option value="120">30 颗心</option>
+					<option value="124">31 颗心</option>
+					<option value="128">32 颗心</option>
+					<option value="132">33 颗心</option>
+					<option value="136">34 颗心</option>
+					<option value="140">35 颗心</option>
+					<option value="144">36 颗心</option>
+					<option value="148">37 颗心</option>
+					<option value="152">38 颗心</option>
+					<option value="156">39 颗心</option>
+					<option value="160">40 颗心</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="select-max-stamina">体力</label></div>
+			<div class="two columns">
+				<select id="select-max-stamina" class="full-width">
+					<option value="1148846080">1 圈</option>
+					<option value="1150681088">1 圈+1/5</option>
+					<option value="1152319488">1 圈+2/5</option>
+					<option value="1153957888">1 圈+3/5</option>
+					<option value="1155596288">1 圈+4/5</option>
+					<option value="1157234688">2 圈</option>
+					<option value="1158250496">2 圈+1/5</option>
+					<option value="1159069696">2 圈+2/5</option>
+					<option value="1159888896">2 圈+3/5</option>
+					<option value="1160708096">2 圈+4/5</option>
+					<option value="1161527296">3 圈</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="select-max-battery">电池容量</label></div>
+			<div class="two columns">
+				<select id="select-max-battery" class="full-width">
+					<option value="3000">3000</option>
+					<option value="4000">4000</option>
+					<option value="5000">5000</option>
+					<option value="6000">6000</option>
+					<option value="7000">7000</option>
+					<option value="8000">8000</option>
+					<option value="9000">9000</option>
+					<option value="10000">10000</option>
+					<option value="11000">11000</option>
+					<option value="12000">12000</option>
+					<option value="13000">13000</option>
+					<option value="14000">14000</option>
+					<option value="15000">15000</option>
+					<option value="16000">16000</option>
+					<option value="17000">17000</option>
+					<option value="18000">18000</option>
+					<option value="19000">19000</option>
+					<option value="20000">20000</option>
+					<option value="21000">21000</option>
+					<option value="22000">22000</option>
+					<option value="23000">23000</option>
+					<option value="24000">24000</option>
+					<option value="25000">25000</option>
+					<option value="26000">26000</option>
+					<option value="27000">27000</option>
+					<option value="28000">28000</option>
+					<option value="29000">29000</option>
+					<option value="30000">30000</option>
+					<option value="31000">31000</option>
+					<option value="32000">32000</option>
+					<option value="33000">33000</option>
+					<option value="34000">34000</option>
+					<option value="35000">35000</option>
+					<option value="36000">36000</option>
+					<option value="37000">37000</option>
+					<option value="38000">38000</option>
+					<option value="39000">39000</option>
+					<option value="40000">40000</option>
+					<option value="41000">41000</option>
+					<option value="42000">42000</option>
+					<option value="43000">43000</option>
+					<option value="44000">44000</option>
+					<option value="45000">45000</option>
+					<option value="46000">46000</option>
+					<option value="47000">47000</option>
+					<option value="48000">48000</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="number-pony-points">驿站点数</label></div>
+			<div class="two columns"><input id="number-pony-points" class="full-width" type="text" /></div>
+		</div>
+		
+		<!-- Pouch size -->
+		<h3 class="border-green">背包</h3>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="number-pouch-size-swords">武器格子</label></div>
+			<div class="two columns"><input id="number-pouch-size-swords" class="full-width" type="text" /></div>
+		</div>
+		<div class="row mb-5">
+			<div class="ten columns"><label for="number-pouch-size-bows">弓箭格子</label></div>
+			<div class="two columns"><input id="number-pouch-size-bows" class="full-width" type="text" /></div>
+		</div>
+		<div class="row">
+			<div class="ten columns"><label for="number-pouch-size-shields">盾牌格子</label></div>
+			<div class="two columns"><input id="number-pouch-size-shields" class="full-width" type="text" /></div>
+		</div>
+	
+		<!-- Coordinates -->
+		<h3 class="border-green">修改坐标</h3>
+		<div class="row">
+			<div class="six columns"><label for="float-pos-x">林克当前的坐标 (XYZ)</label></div>
+			<div class="two columns"><input id="float-pos-x" class="full-width" type="text" /></div>
+			<div class="two columns"><input id="float-pos-y" class="full-width" type="text" /></div>
+			<div class="two columns"><input id="float-pos-z" class="full-width" type="text" /></div>
+		</div>
+		<!-- <div class="row">
+			<div class="six columns"><label for="select-pos-maptype">Map</label></div>
+			<div class="three columns"><select id="select-pos-maptype"></select></div>
+			<div class="three columns"><select id="select-pos-map"></select></div>
+		</div> -->
+
+
+	
+	
+
+
+		<!-- COMPLETIONISM -->
+		<h3 class="border-blue">进度</h3>
+		<div class="row mb-10">
+			<div class="four columns">图章 <span id="span-pin-counter"></span></div>
+			<div class="eight columns text-right">
+				<button onclick="SavegameEditor.clearAllMapPins()">移除所有图章</button>
+			</div>
+		</div>
+		<div class="row mb-10">
+			<div class="four columns"><label for="number-koroks">在地图上标记呀哈哈</label></div>
+			<div class="eight columns text-right">
+				<button onclick="SavegameEditor.addKorokPins(0, 299)">呀哈哈 #001-#300</button>
+				<button onclick="SavegameEditor.addKorokPins(300, 599)">呀哈哈 #301-#600</button>
+				<button onclick="SavegameEditor.addKorokPins(600, 899)">呀哈哈 #601-#900</button>
+			</div>
+		</div>
+
+		<!-- <div class="row">
+			<div class="seven columns"><label for="number-defeated-hinox">Defeated Hinox</label></div>
+			<div class="five columns text-right">
+				<input type="text" id="number-defeated-hinox" style="width:50px" disabled />
+				<button onclick="defeatAllHinox()">Defeat all</button>
+				<button onclick="addHinoxToMap()">Add pins to Map</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="seven columns"><label for="number-defeated-talus">Defeated Talus</label></div>
+			<div class="five columns text-right">
+				<input type="text" id="number-defeated-talus" style="width:50px" disabled />
+				<button onclick="defeatAllTalus()">Defeat all</button>
+				<button onclick="addTalusToMap()">Add pins to Map</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="seven columns"><label for="number-defeated-molduga">Defeated Molduga</label></div>
+			<div class="five columns text-right">
+				<input type="text" id="number-defeated-molduga" style="width:50px" disabled />
+				<button onclick="defeatAllMolduga()">Defeat all</button>
+				<button onclick="addMoldugaToMap()">Add pins to Map</button>
+			</div>
+		</div> -->
+		<div class="row mb-10">
+			<div class="four columns">海拉鲁图鉴 <span id="span-compendium-counter"></span></div>
+			<div class="eight columns text-right">
+				<button onclick="Compendium.setToStock(false)">更新已有图鉴</button>
+				<button onclick="Compendium.setToStock(true)">解锁缺失图鉴</button>
+			</div>
+		</div>
+
+		<!-- <div class="row">
+			<div class="seven columns">Visited locations</div>
+			<div class="five columns text-right">
+				<button onclick="visitAllLocations()">Visit all</button>
+				<button onclick="addLocationsToMap()">Add pins to Map</button>
+			</div>
+		</div> -->
+	</div>
+	
+	<!-- TAB: WEAPONS -->
+	<div id="tab-weapons">
+		<h3>武器</h3><div id="container-weapons"></div>
+		<div class="text-center">
+			<button onclick="SavegameEditor.restoreDurability('weapons')">恢复耐久</button>
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('weapons')">添加武器</button>
+		</div>
+	</div>
+
+	<!-- TAB: BOWS -->
+	<div id="tab-bows">
+		<h3>弓</h3><div id="container-bows"></div>
+		<div class="text-center">
+			<button onclick="SavegameEditor.restoreDurability('bows')">恢复耐久</button>
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('bows')">添加弓</button>
+		</div>
+		<h3>箭</h3><div id="container-arrows"></div>
+	</div>
+
+	<!-- TAB: SHIELDS -->
+	<div id="tab-shields">
+		<h3>盾牌</h3><div id="container-shields"></div>
+		<div class="text-center">
+			<button onclick="SavegameEditor.restoreDurability('shields')">恢复耐久</button>
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('shields')">添加盾牌</button>
+		</div>
+	</div>
+
+	<!-- TAB: ARMORS -->
+	<div id="tab-armors">
+		<h3>防具</h3><div id="container-armors"></div>
+		<div class="text-center">
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('armors')">添加防具</button>
+		</div>
+	</div>
+
+	<!-- TAB: MATERIALS -->
+	<div id="tab-materials">
+		<h3>材料</h3><div id="container-materials"></div>
+		<div class="text-center">
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('materials')">添加材料</button>
+		</div>
+	</div>
+
+	<!-- TAB: FOOD -->
+	<div id="tab-food">
+		<h3>料理</h3><div id="container-food"></div>
+		<div class="text-center">
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('food')">添加料理</button>
+		</div>
+	</div>
+
+	<!-- TAB: ZONAI DEVICES -->
+	<div id="tab-devices">
+		<h3>左纳乌胶囊</h3><div id="container-devices"></div>
+		<div class="text-center">
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('devices')">添加左纳乌胶囊</button>
+		</div>
+	</div>
+
+	<!-- TAB: KEY -->
+	<div id="tab-key">
+		<h3>重要物品</h3><div id="container-key"></div>
+		<div class="text-center">
+			<button class="with-icon icon1" onclick="SavegameEditor.addItem('key')">添加重要物品</button>
+		</div>
+	</div>
+
+	<!-- TAB: HORSES -->
+	<div id="tab-horses">
+		<h3 class="border-blue">马匹</h3>
+		<div id="container-horses"></div>
+		<!-- <div class="row"><div class="twelve columns">未驯服的马</div></div>
+		<div class="row" id="row-horse10">
+			<div class="three columns end"><select id="select-horse10-type"></select></div>
+		</div>
+		<div class="row">
+			<div class="six columns"><label for="float-pos-x-horse">当前马匹坐标 (XYZ)</label></div>
+			<div class="two columns"><input id="float-pos-x-horse" class="full-width" type="text" /></div>
+			<div class="two columns"><input id="float-pos-y-horse" class="full-width" type="text" /></div>
+			<div class="two columns"><input id="float-pos-z-horse" class="full-width" type="text" /></div>
+		</div> -->
+	</div>
+
+	<!-- TAB: MASTER EDITOR -->
+	<div id="tab-master">
+		<div id="master-editor-loading" class="text-center">地图探索进度正在加载...</div>
+		<div id="master-editor-hidden" class="hidden">
+			<label for="select-filters">筛选: </label>
+			<select id="select-filters" onchange="TOTKMasterEditor.refreshResults()">
+				<option value="">- 全部 -</option>
+				<!-- <option value="WolfLink_|Amiibo">Amiibo</option>
+				<option value="_DispNameFlag$">Display flag names</option>
+				<option value="100enemy">DLC1</option>
+				<option value="Motorcycle">DLC2</option>
+				<option value="Horse_">Horses</option>
+				<option value="Defeat_Enemy_|Defeated.+Num">Defeated enemies</option>
+				<option value="Porch|Cook">Items</option>
+				<option value="IsGet_">Get flags</option>
+				<option value="HiddenKorok|OldKorok_">Korok</option>
+				<option value="^Location_">Visited locations</option>
+				<option value="AlbumPicture|PictureBook">Compendium</option> -->
+			</select>
+			<input id="input-custom-filter" type="text" placeholder="搜索关键词" onchange="TOTKMasterEditor.refreshResults()" />
+			
+			 | <label for="select-page">页: </label>
+			<button id="page-prev" onclick="TOTKMasterEditor.prevPage()">&laquo;</button>
+			<select id="select-page" class="small" onchange="TOTKMasterEditor.setPage(this.selectedIndex)"></select>
+			<button id="page-next" onclick="TOTKMasterEditor.nextPage()">&raquo;</button>
+
+
+			<table id="table"></table>
+		</div>
+	</div>
+
+	<!-- TAB: HELP -->
+	<div id="tab-help">
+	</div>
+</div>
+
+<div id="dialog-caption" class="dialog text-center"></div>
+
+</body>
 </html>
