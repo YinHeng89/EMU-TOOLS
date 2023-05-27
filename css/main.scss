@@ -1,7 +1,8 @@
-@charset "UTF-8";
 /*
  * 设置文件编码格式
  */
+@charset "UTF-8";
+
 /*
   * 引入自定义字体
   */
@@ -9,6 +10,7 @@
   font-family: "My Custom Font";
   src: url("/fonts/font.ttf") format("truetype");
 }
+
 /*
   * 设置全局样式
   */
@@ -29,9 +31,8 @@ form {
   box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.1);
   width: 1000px;
   height: 550px;
-  background-color: rgb(255, 255, 255);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255);
+  backdrop-filter: blur(10px);
 }
 
 /*
@@ -51,52 +52,59 @@ form {
   padding-right: 20px;
   font-size: 20px;
   display: flex;
+
   /*
     * 设置左侧菜单栏标题图标样式
     */
-}
-.menu-title img {
-  padding-right: 20px;
+  img {
+    padding-right: 20px;
+  }
 }
 
 /*
   * 设置左侧菜单栏列表样式
   */
-.menu-list li a {
-  text-decoration: none;
-  display: block;
-  color: #3c566c;
-  opacity: 1;
-  background-color: #edf3fc;
-  padding: 10px;
-  border-radius: 40px;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 25px;
-  /*
-    * 设置鼠标悬停样式
-    */
-}
-.menu-list li a:hover {
-  padding: 10px;
-  border-radius: 40px;
-  background-color: #e3eeff;
-  color: #1d7dcc;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 25px;
-  transition: background-color 0.3s ease;
-}
-.menu-list li a.second {
-  background-color: #ffffff;
-  /*
+.menu-list {
+  li a {
+    text-decoration: none;
+    display: block;
+    color: #3c566c;
+    opacity: 1;
+    background-color: #edf3fc;
+    padding: 10px;
+    border-radius: 40px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 25px;
+
+    /*
       * 设置鼠标悬停样式
       */
+    &:hover {
+      padding: 10px;
+      border-radius: 40px;
+      background-color: #e3eeff;
+      color: #1d7dcc;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 25px;
+      transition: background-color 0.3s ease;
+    }
+  }
+
+  li a.second {
+    background-color: #ffffff;
+
+    /*
+        * 设置鼠标悬停样式
+        */
+    &:hover {
+      background-color: #e3eeff;
+      color: #1d7dcc;
+    }
+  }
 }
-.menu-list li a.second:hover {
-  background-color: #e3eeff;
-  color: #1d7dcc;
-}
+
 
 /*
   * 设置主内容区样式
@@ -131,18 +139,19 @@ h1 {
 p {
   margin: 20px 50px;
   text-align: center;
+
   /*
     * 设置第二个p样式
     */
-}
-p.second {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(97, 97, 97, 0.8);
-  width: 800px;
-  text-align: center;
+  &.second {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(97, 97, 97, 0.8);
+    width: 800px;
+    text-align: center;
+  }
 }
 
 /*
@@ -171,7 +180,7 @@ label {
 /*
   * 设置文本输入框样式
   */
-input[type=text] {
+input[type="text"] {
   padding: 10px 20px;
   margin-bottom: 20px;
   font-size: 16px;
@@ -188,28 +197,29 @@ input[type=text] {
   */
 div {
   padding-block: 10px;
+
   /*
     * 设置背景图片样式
     */
-}
-div.page-bg {
-  background-attachment: fixed;
-  background-image: url("../images/bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: blur(0px);
+  &.page-bg {
+    background-attachment: fixed;
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(0px);
+  }
 }
 
 /*
   * 设置文本输入框聚焦样式
   */
-input[type=text]:focus {
+input[type="text"]:focus {
   border-color: rgb(0, 123, 255);
   outline: none;
   box-shadow: 0 0 5px rgb(0, 123, 255);
@@ -218,7 +228,7 @@ input[type=text]:focus {
 /*
   * 设置普通按钮样式
   */
-input[type=button] {
+input[type="button"] {
   margin-bottom: 15px;
   margin-inline: 5px;
   background-color: #0ea5e9;
@@ -234,14 +244,14 @@ input[type=button] {
 /*
   * 设置鼠标悬停样式
   */
-input[type=button]:hover {
+input[type="button"]:hover {
   background-color: #1c96d8;
 }
 
 /*
   * 设置禁用状态下的按钮样式
   */
-input[type=button][disabled],
+input[type="button"][disabled],
 button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
@@ -250,7 +260,7 @@ button[disabled] {
 /*
   * 设置禁用状态下的下载按钮样式
   */
-input[type=button][disabled].downloadBtn,
+input[type="button"][disabled].downloadBtn,
 button[disabled].downloadBtn {
   background-color: #ddd;
   color: #333333;
@@ -260,7 +270,7 @@ button[disabled].downloadBtn {
   * 设置按钮、链接的鼠标样式
   */
 button,
-input[type=button],
+input[type="button"],
 a {
   cursor: pointer;
 }
@@ -268,8 +278,8 @@ a {
 /*
   * 设置提交按钮、重置按钮样式
   */
-input[type=submit],
-input[type=reset] {
+input[type="submit"],
+input[type="reset"] {
   padding: 10px 20px;
   margin: 20px 0 0;
   font-size: 18px;
@@ -284,7 +294,7 @@ input[type=reset] {
 /*
   * 设置提交按钮、重置按钮鼠标悬停样式
   */
-input[type=submit]:hover,
-input[type=reset]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
   background-color: #3071a9;
-}/*# sourceMappingURL=main.css.map */
+}
