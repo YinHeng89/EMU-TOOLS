@@ -10,14 +10,27 @@ function checkVersion() {
     .then(function (response) {
       latestVersion = response.data.tag_name;
       let downBtnEls = document.getElementsByClassName("downloadBtn");
-      alert("当前最新版本号为：" + latestVersion);
       document.getElementById("latestVersion").innerText = latestVersion
       for (let i = 0; i < downBtnEls.length; i++) {
         downBtnEls[i].removeAttribute("disabled");
       }
+
+      // 使用 SweetAlert2 弹出最新版本号提示
+      Swal.fire({
+        text: '当前最新版本号为：' + latestVersion,
+        icon: 'success',
+        confirmButtonText: '确认'
+      });
+      
     })
     .catch(function (error) {
-      alert("检测最新版本失败，请稍后重试！" + error);
+      // 使用 SweetAlert2 弹出错误提示
+      Swal.fire({
+        title: '错误',
+        text: '检测最新版本失败，请稍后重试！' + error,
+        icon: 'error',
+        confirmButtonText: '确认'
+      });
     });
 }
 
@@ -43,22 +56,30 @@ async function downloadLatest(os) {
 
 // 下载最新固件
 function downloadfirmware() {
-  // 发送 GET 请求以获取仓库信息和资产信息
   axios.get("https://api.github.com/repos/THZoria/NX_Firmware/releases/latest")
     .then(response => {
-      // 获取最新版本中的第一个资产（即软件包文件）
       const asset = response.data.assets[0];
-      // 获取最新版本字符串
       const version = response.data.tag_name;
-      // 获取经过代理处理后的下载地址
       const downloadUrl = `https://ghproxy.com/${asset.browser_download_url}`;
-      // 弹出对话框提示，显示最新版本信息，让用户确认下载
-      if (confirm(`当前最新固件为 ${version}，是否下载？`)) {
-        window.open(downloadUrl); // 下载最新固件
-      }
+      
+      Swal.fire({
+        title: `最新固件版本：${version}`,
+        text: "是否下载最新固件？",
+        showCancelButton: true,
+        confirmButtonColor: "#0ea5e9",
+        cancelButtonColor: "#bebebe",
+        cancelButtonText: "取消",
+        confirmButtonText: "下载",
+        reverseButtons: true // 颠倒两个按钮的顺序
+      }).then(result => {
+        if (result.isConfirmed) {
+          window.open(downloadUrl);
+        }
+      });
     })
     .catch(error => {
       console.error(error);
     });
 }
+
 

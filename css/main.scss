@@ -11,6 +11,47 @@
   src: url("/fonts/font.ttf") format("truetype");
 }
 
+#app {
+  div {
+    padding-block: 10px;
+    padding-top: 15px;
+
+    /*
+    * 设置背景图片样式
+    */
+    &.page-bg {
+      background-attachment: fixed;
+      background-image: url('../images/bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: blur(0px);
+    }
+
+    &.second {
+      display: flex;
+      flex-direction: inherit;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-inline: 48.5px;
+      font-size: 16px;
+      height: 100%;
+      border-left: 2px solid #eef1f5;
+      overflow-y: overlay !important;
+      padding-top: 50px;
+      flex: 1;
+      box-sizing: border-box;
+    }
+  }
+
+}
+
+
 /*
   * 设置全局样式
   */
@@ -22,10 +63,10 @@ body {
 /*
   * 设置链接样式
   */
-  a {
-    color: rgba(97, 97, 97,);
-    opacity: 0.8;
-  }
+// a {
+//   color: rgba(97, 97, 97, );
+//   opacity: 0.8;
+// }
 
 /*
   * 设置表单样式
@@ -51,8 +92,9 @@ form {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  a{
-    color: rgba(0, 0, 0,);
+
+  a {
+    color: rgba(0, 0, 0, );
     opacity: 1;
   }
 }
@@ -134,13 +176,17 @@ form {
   padding-top: 50px;
   flex: 1;
   box-sizing: border-box;
+  a{
+    opacity:1;
+    color: rgba(97, 97, 97, );
+  }
 }
 
 /*
   * 设置h1标题样式
   */
 h1 {
-  margin-top: 50px;
+  margin-top: 80px;
   text-align: center;
   font-size: 30px;
   color: #192b3a;
@@ -196,43 +242,6 @@ input[type="text"] {
   width: 200px;
 }
 
-/*
-  * 设置背景样式
-  */
-div {
-  padding-block: 10px;
-
-  /*
-    * 设置背景图片样式
-    */
-  &.page-bg {
-    background-attachment: fixed;
-    background-image: url('../images/bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(0px);
-  }
-  &.second {
-    display: flex;
-    flex-direction: inherit;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding-inline: 48.5px;
-    font-size: 16px;
-    height: 100%;
-    border-left: 2px solid #eef1f5;
-    overflow-y: overlay !important;
-    padding-top: 50px;
-    flex: 1;
-    box-sizing: border-box;
-  }
-}
 
 /*
   * 设置文本输入框聚焦样式

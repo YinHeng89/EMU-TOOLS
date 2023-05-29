@@ -112,6 +112,12 @@ legend {
 fieldset,
 img {
     border: 0;
+    transition: transform 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.05);
 }
 
 /* img 搭车：让链接里的 img 无边框 */
