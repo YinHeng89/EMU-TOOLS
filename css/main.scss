@@ -20,6 +20,14 @@ body {
 }
 
 /*
+  * 设置链接样式
+  */
+  a {
+    color: rgba(97, 97, 97,);
+    opacity: 0.8;
+  }
+
+/*
   * 设置表单样式
   */
 form {
@@ -43,6 +51,10 @@ form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  a{
+    color: rgba(0, 0, 0,);
+    opacity: 1;
+  }
 }
 
 /*
@@ -155,15 +167,6 @@ p {
 }
 
 /*
-  * 设置链接样式
-  */
-a {
-  color: rgba(97, 97, 97, 0.8);
-  opacity: 0.8;
-  text-decoration: none;
-}
-
-/*
   * 设置表单标签样式
   */
 label {
@@ -213,6 +216,20 @@ div {
     left: 0;
     z-index: -1;
     filter: blur(0px);
+  }
+  &.second {
+    display: flex;
+    flex-direction: inherit;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-inline: 48.5px;
+    font-size: 16px;
+    height: 100%;
+    border-left: 2px solid #eef1f5;
+    overflow-y: overlay !important;
+    padding-top: 50px;
+    flex: 1;
+    box-sizing: border-box;
   }
 }
 

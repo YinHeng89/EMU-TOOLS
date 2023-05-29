@@ -11,7 +11,7 @@
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?1b543a5332cd02150245c48f823a0c55";
             var s = document.getElementsByTagName("script")[0];
@@ -23,10 +23,12 @@
 <body>
     <form>
         <div class="menu">
-            <div class="menu-title">
-                <img src="./images/logo.png" height="30px" width="30px">
-                <span>EMU-Tools</span>
-            </div>
+            <a class="a"href="https://emu-tools.com/" target="_parent" title="EMU-Tool 模拟器在线更新工具">
+                <div class="menu-title">
+                    <img src="./images/logo.png" height="30px" width="30px">
+                    <span>EMU-Tools</span>
+                </div>
+            </a>
             <ul class="menu-list">
                 <li><a href="/" target="_parent">Yuzu模拟器</a></li>
                 <li><a class="second" href="#" target="_parent" title="开发中">ryujinx模拟器</a></li>
@@ -46,12 +48,15 @@
                     <input type="button" value="检测更新" onclick="checkVersion()">
                 </div>
                 <div>
-                    <input type="button" value="下载最新版(Windows)" onclick="downloadLatest('Windows')" class="downloadBtn" disabled="disabled">
-                    <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')" class="downloadBtn" disabled="disabled">
+                    <input type="button" value="下载最新版(Windows)" onclick="downloadLatest('Windows')" class="downloadBtn"
+                        disabled="disabled">
+                    <input type="button" value="下载最新版(Linux)" onclick="downloadLatest('Linux')" class="downloadBtn"
+                        disabled="disabled">
                     <input type="button" value="检查并下载最新固件" onclick="downloadfirmware()">
                 </div>
             </form>
-            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本，所有软件包来源于<a href="https://github.com/" target="_blank">GitHub</a></p>
+            <p style="color: rgb(190, 190, 190);">本工具只用于检测yuzu模拟器最新版本，所有软件包来源于<a href="https://github.com/"
+                    target="_blank">GitHub</a></p>
         </div>
     </form>
     <p class="second">当前工具版本 v1.0.3 <a href="./update.html" target="_blank">查看更新记录</a></p>
