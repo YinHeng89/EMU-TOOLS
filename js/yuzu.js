@@ -63,8 +63,8 @@ function downloadfirmware() {
       const downloadUrl = `https://ghproxy.com/${asset.browser_download_url}`;
       
       Swal.fire({
-        title: `最新固件版本：${version}`,
-        text: "是否下载最新固件？",
+        icon: 'success',
+        text:  `下载最新固件版本：${version}`,
         showCancelButton: true,
         confirmButtonColor: "#0ea5e9",
         cancelButtonColor: "#bebebe",

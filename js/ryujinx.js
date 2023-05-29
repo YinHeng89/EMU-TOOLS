@@ -21,7 +21,7 @@ function checkVersion() {
         icon: 'success',
         confirmButtonText: '确认'
       });
-      
+
     })
     .catch(function (error) {
       // 使用 SweetAlert2 弹出错误提示
@@ -61,10 +61,10 @@ function downloadfirmware() {
       const asset = response.data.assets[0];
       const version = response.data.tag_name;
       const downloadUrl = `https://ghproxy.com/${asset.browser_download_url}`;
-      
+
       Swal.fire({
-        title: `最新固件版本：${version}`,
-        text: "是否下载最新固件？",
+        icon: 'success',
+        text: `下载最新固件版本：${version}`,
         showCancelButton: true,
         confirmButtonColor: "#0ea5e9",
         cancelButtonColor: "#bebebe",
