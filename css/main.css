@@ -9,6 +9,15 @@
   font-family: "My Custom Font";
   src: url("/fonts/font.ttf") format("truetype");
 }
+:root {
+  --focus-visible-color: #ffffff;
+}
+
+/* Elements with focus-visible will have a red border */
+:focus-visible {
+  outline: 0px solid var(--focus-visible-color);
+}
+
 #app div {
   padding-block: 10px;
   padding-top: 15px;
@@ -210,27 +219,9 @@ label {
 /*
   * 设置文本输入框样式
   */
-input[type=text] {
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: #333333;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 40px;
-  text-align: center;
-  width: 200px;
-}
-
 /*
   * 设置文本输入框聚焦样式
   */
-input[type=text]:focus {
-  border-color: rgb(0, 123, 255);
-  outline: none;
-  box-shadow: 0 0 5px rgb(0, 123, 255);
-}
-
 /*
   * 设置普通按钮样式
   */
@@ -246,14 +237,14 @@ input[type=button] {
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
+input[type=button]:hover {
+  background-color: #1c96d8;
+  cursor: pointer;
+}
 
 /*
   * 设置鼠标悬停样式
   */
-input[type=button]:hover {
-  background-color: #1c96d8;
-}
-
 /*
   * 设置禁用状态下的按钮样式
   */
@@ -275,12 +266,6 @@ button[disabled].downloadBtn {
 /*
   * 设置按钮、链接的鼠标样式
   */
-button,
-input[type=button],
-a {
-  cursor: pointer;
-}
-
 .img {
   display: flex;
   align-content: flex-start;
@@ -298,23 +283,66 @@ a {
 /*
   * 设置提交按钮、重置按钮样式
   */
-input[type=submit],
-input[type=reset] {
-  padding: 10px 20px;
-  margin: 20px 0 0;
-  font-size: 18px;
-  color: #ffffff;
-  background-color: #428bca;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 /*
   * 设置提交按钮、重置按钮鼠标悬停样式
   */
-input[type=submit]:hover,
-input[type=reset]:hover {
-  background-color: #3071a9;
+.firmware {
+  min-width: 0px;
+  font-size: 16px;
+  height: 100%;
+  overflow-y: overlay !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+.firmware #versions {
+  height: 44px;
+  border-radius: 40px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  margin-inline: 20px;
+  font-size: 16px;
+  color: #333333;
+  background-color: #f0f0f0;
+  border: none;
+  text-align: center;
+  width: 200px;
+  font-family: "My Custom Font", sans-serif;
+  margin-top: 30px;
+}
+
+#downloadButton {
+  margin-bottom: 15px;
+  margin-inline: 5px;
+  background-color: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-family: "My Custom Font", sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 150px;
+}
+#downloadButton:hover {
+  background-color: #1c96d8;
+  cursor: pointer;
+}
+
+/* 设置滚动条样式 */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: rgba(196, 196, 196, 0.9333333333);
+  border-radius: 4px;
 }/*# sourceMappingURL=main.css.map */
