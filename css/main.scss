@@ -41,11 +41,11 @@
       padding-inline: 48.5px;
       font-size: 16px;
       height: 100%;
-      border-left: 2px solid #eef1f5;
       overflow-y: overlay !important;
       padding-top: 50px;
       flex: 1;
       box-sizing: border-box;
+      align-content: flex-start;
     }
   }
 
@@ -92,6 +92,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  border-right: 2px solid #eef1f5;
 
   a {
     color: rgba(0, 0, 0, );
@@ -167,7 +168,6 @@ form {
   min-width: 0px;
   font-size: 16px;
   height: 100%;
-  border-left: 2px solid #eef1f5;
   overflow-y: overlay !important;
   display: flex;
   flex-direction: column;
@@ -176,8 +176,9 @@ form {
   padding-top: 50px;
   flex: 1;
   box-sizing: border-box;
-  a{
-    opacity:1;
+
+  a {
+    opacity: 1;
     color: rgba(97, 97, 97, );
   }
 }
@@ -300,6 +301,22 @@ button,
 input[type="button"],
 a {
   cursor: pointer;
+}
+
+// 图片边距
+
+.img {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding-inline: 26.5px;
+  font-size: 16px;
+  height: 100%;
+  flex: 1;
+  margin-top: 30px;
+  a {
+    padding: 15px 15px 15px 15px;
+  }
 }
 
 /*

@@ -9,18 +9,6 @@
   font-family: "My Custom Font";
   src: url("/fonts/font.ttf") format("truetype");
 }
-
-
-:root {
-  --focus-visible-color: #ffffff;
-}
-
-/* Elements with focus-visible will have a red border */
-:focus-visible {
-  outline:0px solid var(--focus-visible-color);
-}
-
-
 #app div {
   padding-block: 10px;
   padding-top: 15px;
@@ -49,11 +37,11 @@
   padding-inline: 48.5px;
   font-size: 16px;
   height: 100%;
-  border-left: 2px solid #eef1f5;
   overflow-y: overlay !important;
   padding-top: 50px;
   flex: 1;
   box-sizing: border-box;
+  align-content: flex-start;
 }
 
 /*
@@ -92,6 +80,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  border-right: 2px solid #eef1f5;
 }
 .menu a {
   color: rgb(0, 0, 0);
@@ -159,7 +148,6 @@ form {
   min-width: 0px;
   font-size: 16px;
   height: 100%;
-  border-left: 2px solid #eef1f5;
   overflow-y: overlay !important;
   display: flex;
   flex-direction: column;
@@ -290,6 +278,20 @@ button,
 input[type=button],
 a {
   cursor: pointer;
+}
+
+.img {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding-inline: 26.5px;
+  font-size: 16px;
+  height: 100%;
+  flex: 1;
+  margin-top: 30px;
+}
+.img a {
+  padding: 15px 15px 15px 15px;
 }
 
 /*
