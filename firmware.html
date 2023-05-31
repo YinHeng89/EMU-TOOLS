@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./css/sweetalert2.min.css">
     <script src="./js/sweetalert2.all.min.js"></script>
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -43,8 +46,16 @@
         <div class="firmware">
             <div>
                 <h1 style="font-size: 25px;margin-block: 30px;">NS固件下载</h1>
-                <select id="versions"></select>
+                <div>
+                    <button class="btn-primary dropdown-toggle" type="button" id="versionsDropdown" data-toggle="dropdown" aria-expanded="false">
+                      固件加载中
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="versionsDropdown" id="versionsDropdownMenu">
+                      <!-- 下拉菜单里的选项将通过 JavaScript 动态生成 -->
+                    </div>
+                  
                 <button id="downloadButton">下载</button>
+            </div>
             </div>
             <div>
                 <h1 style="font-size: 25px;margin-top: 30px;">Keys下载</h1>
