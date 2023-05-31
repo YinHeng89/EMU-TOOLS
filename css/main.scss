@@ -375,21 +375,21 @@ button[disabled].downloadBtn {
   box-sizing: border-box;
   margin-top: 50px;
 
-  #versions {
-    height: 44px;
-    border-radius: 40px;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    margin-inline:20px;
-    font-size: 16px;
-    color: #333333;
-    background-color: #f0f0f0;
-    border: none;
-    text-align: center;
-    width: 200px;
-    font-family: "My Custom Font", sans-serif;
-    margin-top: 30px;
-  }
+  // #versions {
+  //   height: 44px;
+  //   border-radius: 40px;
+  //   padding: 10px 20px;
+  //   margin-bottom: 20px;
+  //   margin-inline:20px;
+  //   font-size: 16px;
+  //   color: #333333;
+  //   background-color: #f0f0f0;
+  //   border: none;
+  //   text-align: center;
+  //   width: 200px;
+  //   font-family: "My Custom Font", sans-serif;
+  //   margin-top: 30px;
+  // }
 }
 
 #downloadButton {
@@ -425,6 +425,16 @@ select::-webkit-scrollbar-track {
 select::-webkit-scrollbar-thumb {
   background-color: #c4c4c4ee;
   border-radius: 4px;
+}
+select{
+  color: #333;
+  height: 44px;
+  width: 220px;
+  border-radius: 40px;
+  border-color: #999999;
+  text-align: center;
+  font-family: "My Custom Font", sans-serif;
+  margin-right: 20px;
 }
 
 
