@@ -225,10 +225,12 @@ label {
   font-weight: normal;
   color: #666666;
   text-align: center;
-  padding-right: 60px;
+  padding-inline: 25px;
   background-color: #ebebeb;
-  border-radius: 20px;
-  padding: 10px 20px;
+  border-radius: 40px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 /*
