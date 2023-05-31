@@ -18,6 +18,21 @@
   outline: 0px solid var(--focus-visible-color);
 }
 
+/* 设置滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(196, 196, 196, 0.9333333333);
+  border-radius: 4px;
+}
+
 #app div {
   padding-block: 10px;
   padding-top: 15px;
