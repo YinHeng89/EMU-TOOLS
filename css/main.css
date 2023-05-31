@@ -341,10 +341,12 @@ button[disabled].downloadBtn {
   margin-right: 20px;
   cursor: pointer;
   font-family: "My Custom Font", sans-serif;
+  border: none;
 }
 .btn-primary:hover {
-  color: #333;
-  background-color: #ddd;
+  color: #1d7dcc;
+  background-color: #e3eeff;
+  transition: background-color 0.3s ease;
 }
 
 .dropdown, .dropup {
@@ -363,8 +365,8 @@ button[disabled].downloadBtn {
   text-align: left;
   list-style: none;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border: 1px solid rgba(68, 68, 68, 0.15);
+  border-radius: 0.5rem;
   max-height: 225px; /* 设置最大高度 */
   overflow-y: auto; /* 添加垂直滚动条 */
   background-color: #fff; /* 添加背景颜色 */
@@ -403,6 +405,5 @@ button[disabled].downloadBtn {
 }
 .dropdown-item:hover {
   color: #fff;
-  background-color: #1c96d8;
-  border-color: #0062cc;
+  background-color: #0ea5e9;
 }/*# sourceMappingURL=main.css.map */
