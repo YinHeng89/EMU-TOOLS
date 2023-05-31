@@ -64,7 +64,7 @@ function downloadfirmware() {
 
       Swal.fire({
         icon: 'success',
-        text: `下载最新固件版本：${version}`,
+        text: `当前最新固件版本：${version}`,
         showCancelButton: true,
         confirmButtonColor: "#0ea5e9",
         cancelButtonColor: "#bebebe",

@@ -344,8 +344,8 @@ button[disabled].downloadBtn {
   border: none;
 }
 .btn-primary:hover {
-  color: #1d7dcc;
-  background-color: #e3eeff;
+  color: #333;
+  background-color: #ddd;
   transition: background-color 0.3s ease;
 }
 
@@ -354,22 +354,22 @@ button[disabled].downloadBtn {
 }
 
 .dropdown-menu {
-  z-index: 1000;
   display: none;
-  float: left;
+}
+.dropdown-menu.show {
+  display: block;
+  width: 218px;
+  max-height: 225px; /* 设置最大高度 */
+  overflow-y: auto; /* 添加垂直滚动条 */
+  background-color: #fff; /* 添加背景颜色 */
+  border: 1px solid rgba(68, 68, 68, 0.15);
+  border-radius: 0.5rem;
+  background-clip: padding-box;
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-clip: padding-box;
-  border: 1px solid rgba(68, 68, 68, 0.15);
-  border-radius: 0.5rem;
-  max-height: 225px; /* 设置最大高度 */
-  overflow-y: auto; /* 添加垂直滚动条 */
-  background-color: #fff; /* 添加背景颜色 */
+  z-index: 1000;
 }
 
 .dropdown-toggle::after {
@@ -385,25 +385,16 @@ button[disabled].downloadBtn {
   border-left: 0.3em solid transparent;
 }
 
-.dropdown-menu.show {
-  display: block;
-}
-
 .dropdown-item {
   display: block;
-  width: 100%;
-  padding: 0.25rem 1.5rem;
-  clear: both;
-  font-weight: 400;
-  color: #212529;
-  text-align: inherit;
-  white-space: nowrap;
+  padding-left: 30px;
+  color: #333;
   background-color: #fff;
-  border: 0;
-  width: 160px;
-  line-height: 30px;
+  line-height: 45px;
+  margin-inline: 5px;
+  border-radius: 5px;
 }
 .dropdown-item:hover {
-  color: #fff;
-  background-color: #0ea5e9;
+  color: #333;
+  background-color: #eee;
 }/*# sourceMappingURL=main.css.map */
