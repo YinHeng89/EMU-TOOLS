@@ -7,7 +7,7 @@ axios.get('https://api.github.com/repos/THZoria/NX_Firmware/releases')
     versions.forEach(version => {
       const option = document.createElement('option');
       option.value = version;
-      option.textContent = version;
+      option.textContent = '固件版本 ' + version; // 加上固件版本号文字
       versionSelect.appendChild(option);
     });
 
