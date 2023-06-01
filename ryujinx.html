@@ -46,7 +46,7 @@
                         class="version-selection">
                         <a class="tab-btn active" onclick="toggleTab('mainline')">主线版</a>
                         <a class="tab-btn" onclick="toggleTab('ava')">AVA版</a>
-                        <a class="tab-btn" onclick="toggleTab('sdl2')">联机版</a>
+                        <a class="tab-btn" onclick="toggleTab('LDN')">联机版</a>
                     </div>
                 </h1>
                 <form>
@@ -86,21 +86,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="version-content" id="sdl2-content" style="display:none">
-                        <div class="version-ryujinx" id="sdl2-content">
-                            <p>请点击下方按钮“版本检测”按钮检测最新版本。</p>
+                    <div class="version-content" id="LDN-content" style="display:none">
+                        <div class="version-ryujinx" id="LDN-content">
+                            <p>联机版下载链接同步官方最新版本</p>
                             <div>
-                                <!-- <input type="text" id="version" name="version"> -->
-                                <label id="version-sdl2">当前最新版本号为： <span id="latestVersionSDL2">-----</span></label>
-                                <input type="button" value="版本检测" onclick="checkVersionSDL2()">
-                                <input type="button" value="下载最新固件" onclick="downloadfirmware()">
-
-                            </div>
-                            <div>
-                                <input type="button" value="下载最新版(Windows)" onclick="downloadLatestSDL2('Windows')"
-                                    class="downloadBtn" disabled="disabled">
-                                <input type="button" value="下载最新版(Linux)" onclick="downloadLatestSDL2('Linux')"
-                                    class="downloadBtn" disabled="disabled">
+                                <input type="button" value="下载最新版(Windows)" onclick="downloadLatestLDN('Windows')"
+                                    class="downloadBtn">
+                                <input type="button" value="下载最新版(Linux)" onclick="downloadLatestLDN('Linux')"
+                                    class="downloadBtn">
                             </div>
                         </div>
                     </div>

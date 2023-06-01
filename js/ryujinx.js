@@ -119,12 +119,12 @@ async function downloadLatest(os) {
 // var latestVersion = ""
 
 // 检测最新版本（联机版本）
-function checkVersionSDL2() {
+function checkVersionLDN() {
   axios.get("https://api.github.com/repos/Ryujinx/release-channel-master/releases/latest")
     .then(function (response) {
       latestVersion = response.data.tag_name;
       let downBtnEls = document.getElementsByClassName("downloadBtn");
-      document.getElementById("latestVersionSDL2").innerText = latestVersion
+      document.getElementById("latestVersionLDN").innerText = latestVersion
       for (let i = 0; i < downBtnEls.length; i++) {
         downBtnEls[i].removeAttribute("disabled");
       }
@@ -149,7 +149,7 @@ function checkVersionSDL2() {
 }
 
 // 下载最新版本
-async function downloadLatestSDL2(os) {
+async function downloadLatestLDN(os) {
   const owner = 'Ryujinx';
   const repo = 'release-channel-master';
 
@@ -158,15 +158,21 @@ async function downloadLatestSDL2(os) {
   const latestRelease = await apiResponse.json();
   const latestVersion = latestRelease.tag_name;
 
-  // 从 API 响应中获取下载链接
-  const osEm = {
-    Windows: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url}`,
-    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url}`
+    const osEm = {
+    Windows: `https://www.patreon.com/file?h=74910544&i=13368547`,
+    Linux: `https://www.patreon.com/file?h=74910544&i=13368553`
   };
+
+
+  // // 从 API 响应中获取下载链接
+  // const osEm = {
+  //   Windows: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url}`,
+  //   Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url}`
+  // };
   
-  // 直接获取和修改文件名
-  osEm.Windows = osEm.Windows.replace(/ryujinx-/, 'sdl2-ryujinx-headless-'); 
-  osEm.Linux = osEm.Linux.replace(/ryujinx-/, 'sdl2-ryujinx-headless-'); 
+  // // 直接获取和修改文件名
+  // osEm.Windows = osEm.Windows.replace(/ryujinx-/, 'LDN-ryujinx-headless-'); 
+  // osEm.Linux = osEm.Linux.replace(/ryujinx-/, 'LDN-ryujinx-headless-'); 
   
 
   // 打开新窗口下载文件
