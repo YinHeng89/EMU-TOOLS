@@ -21,7 +21,7 @@ function checkVersion() {
         icon: 'success',
         confirmButtonText: '确认'
       });
-      
+
     })
     .catch(function (error) {
       // 使用 SweetAlert2 弹出错误提示
@@ -50,7 +50,7 @@ async function downloadLatest(os) {
     Linux: latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url,
     Android: 'https://play.google.com/store/apps/details?id=org.yuzu.yuzu_emu'
   };
-  
+
 
   // 打开新窗口下载文件
   window.open(osEm[os]);
@@ -80,7 +80,7 @@ function checkVersionEA() {
         icon: 'success',
         confirmButtonText: '确认'
       });
-      
+
     })
     .catch(function (error) {
       // 使用 SweetAlert2 弹出错误提示
@@ -121,10 +121,10 @@ function downloadfirmware() {
       const asset = response.data.assets[0];
       const version = response.data.tag_name;
       const downloadUrl = `https://ghproxy.com/${asset.browser_download_url}`;
-      
+
       Swal.fire({
         icon: 'success',
-        text:  `当前最新固件版本：${version}`,
+        text: `当前最新固件版本：${version}`,
         showCancelButton: true,
         confirmButtonColor: "#0ea5e9",
         cancelButtonColor: "#bebebe",
@@ -144,15 +144,20 @@ function downloadfirmware() {
 
 
 function toggleTab(tabName) {
-     var i;
-     var tabContent = document.getElementsByClassName("version-content");
-     var tabBtns = document.getElementsByClassName("tab-btn");
-     for (i = 0; i < tabContent.length; i++) {
-          tabContent[i].style.display = "none";
-     }
-     for (i = 0; i < tabBtns.length; i++) {
-          tabBtns[i].className = tabBtns[i].className.replace("active", "");
-     }
-     document.getElementById(tabName + "-content").style.display = "block";
-     event.currentTarget.className += " active";
+  var i;
+  var tabContent = document.getElementsByClassName("version-content");
+  var tabBtns = document.getElementsByClassName("tab-btn");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+  for (i = 0; i < tabBtns.length; i++) {
+    tabBtns[i].className = tabBtns[i].className.replace("active", "");
+  }
+  document.getElementById(tabName + "-content").style.display = "block";
+  event.currentTarget.className += " active";
+  // 禁用最新版本下载按钮
+  let downBtnEls = document.getElementsByClassName("downloadBtn");
+  for (let i = 0; i < downBtnEls.length; i++) {
+    downBtnEls[i].setAttribute("disabled", "disabled");
+  }
 }
