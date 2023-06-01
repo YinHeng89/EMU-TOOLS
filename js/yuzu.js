@@ -4,11 +4,11 @@
 // document.getElementById("version").value = currentVersion;
 // var latestVersion = ""
 
-// 检测最新版本
+// 检测最新版本(主线版)
 function checkVersion() {
-  axios.get("https://api.github.com/repos/pineappleEA/pineapple-src/releases/latest")
+  axios.get("https://api.github.com/repos/yuzu-emu/yuzu-mainline/releases/latest")
     .then(function (response) {
-      latestVersion = response.data.tag_name;
+      latestVersion = response.data.name;
       let downBtnEls = document.getElementsByClassName("downloadBtn");
       document.getElementById("latestVersion").innerText = latestVersion
       for (let i = 0; i < downBtnEls.length; i++) {
@@ -36,6 +36,65 @@ function checkVersion() {
 
 // 下载最新版本
 async function downloadLatest(os) {
+  const owner = 'yuzu-emu';
+  const repo = 'yuzu-mainline';
+
+  // 发起 API 请求获取最新版本号
+  const apiResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+  const latestRelease = await apiResponse.json();
+  const latestVersion = latestRelease.tag_name;
+
+  // 从 API 响应中获取下载链接
+  const osEm = {
+    Windows: latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url.replace('-debugsymbols', ''),
+    Linux: latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url,
+    Android: 'https://play.google.com/store/apps/details?id=org.yuzu.yuzu_emu'
+  };
+  
+
+  // 打开新窗口下载文件
+  window.open(osEm[os]);
+}
+
+
+
+// 显示当前版本号
+// var currentVersion = "EA-3556";
+// document.getElementById("version").value = currentVersion;
+// var latestVersion = ""
+
+// 检测最新版本（EA版）
+function checkVersionEA() {
+  axios.get("https://api.github.com/repos/pineappleEA/pineapple-src/releases/latest")
+    .then(function (response) {
+      latestVersion = response.data.tag_name;
+      let downBtnEls = document.getElementsByClassName("downloadBtn");
+      document.getElementById("latestVersionEA").innerText = latestVersion
+      for (let i = 0; i < downBtnEls.length; i++) {
+        downBtnEls[i].removeAttribute("disabled");
+      }
+
+      // 使用 SweetAlert2 弹出最新版本号提示
+      Swal.fire({
+        text: '当前最新版本号为：' + latestVersion,
+        icon: 'success',
+        confirmButtonText: '确认'
+      });
+      
+    })
+    .catch(function (error) {
+      // 使用 SweetAlert2 弹出错误提示
+      Swal.fire({
+        title: '错误',
+        text: '检测最新版本失败，请稍后重试！' + error,
+        icon: 'error',
+        confirmButtonText: '确认'
+      });
+    });
+}
+
+// 下载最新版本
+async function downloadLatestEA(os) {
   const owner = 'pineappleEA';
   const repo = 'pineapple-src';
 
@@ -47,7 +106,8 @@ async function downloadLatest(os) {
   // 从 API 响应中获取下载链接
   const osEm = {
     Windows: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url}`,
-    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url}`
+    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url}`,
+    Android: `https://play.google.com/store/apps/details?id=org.yuzu.yuzu_emu.ea`
   };
 
   // 打开新窗口下载文件
@@ -83,3 +143,16 @@ function downloadfirmware() {
 }
 
 
+function toggleTab(tabName) {
+     var i;
+     var tabContent = document.getElementsByClassName("version-content");
+     var tabBtns = document.getElementsByClassName("tab-btn");
+     for (i = 0; i < tabContent.length; i++) {
+          tabContent[i].style.display = "none";
+     }
+     for (i = 0; i < tabBtns.length; i++) {
+          tabBtns[i].className = tabBtns[i].className.replace("active", "");
+     }
+     document.getElementById(tabName + "-content").style.display = "block";
+     event.currentTarget.className += " active";
+}
