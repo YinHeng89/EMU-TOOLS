@@ -1,0 +1,15 @@
+{
+	"name": "EMU-Tools",
+	"short_name": "EMU-Tools",
+	"icons": [{
+		"src": "./images/logo.png",
+		"type": "image/png",
+		"sizes": "192x192"
+	}],
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#181818",
+	"theme_color": "##eef1f5",
+	"version": "1.0.3.3" // 你的版本号
+}
