@@ -2,83 +2,99 @@
 <html>
 
 <head>
-  <meta http-equiv= "Content-Type" content= "text/html; charset=utf-8" />
-  <title>版本更新记录</title>
-  <link rel="stylesheet" href="./css/update.css">
+    <title>EMU-Tools 模拟器在线更新工具</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keyword" content="switch模拟器,steam deck模拟器,模拟器,Yuzu,Ryujinx,固件下载" />
+    <link rel="stylesheet" href="./css/reset.css?v=1.0.1">
+    <link rel="stylesheet" href="./css/main.css?v=1.0.2">
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1b543a5332cd02150245c48f823a0c55";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        h1,
+        h2 {
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        details {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        details>*:not(summary) {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        p {
+            text-align: left;
+            margin: 20px 50px;
+            margin-left: 0px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="page-bg"></div>
-  <div>
-    <h1 class="h2">EMU-Tools 模拟器在线更新工具</h1>
-
-  <div class="page-border">
-    <div class="container">
-      <ul>
-        <li>
-          <h3>版本号：1.0.3.5（计划中，考虑细节优化）</h3>
-          <ul>
-            <li><strong>细节优化：</strong>优化部分细节</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.3.4</h3>
-          <ul>
-            <li><strong>新增功能：</strong>添加模拟器更新日志，点击页面下方查看 更新日志 就可以查看啦！</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.3.3</h3>
-          <ul>
-            <li><strong>新增功能：</strong>两大主流模拟器版本切换</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.3.2</h3>
-          <ul>
-            <li><strong>新增功能：</strong>NS固件下载</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.3.1</h3>
-          <ul>
-            <li><strong>新增功能：</strong>Ryujinx-AVA版本检测、其他工具（王国之泪存档修改器、CryoUtilities 2.0、Amiibo下载网站）</li>
-            <li><strong>页面重构：</strong>优化页面样式</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.3</h3>
-          <ul>
-            <li><strong>软件名称变更：</strong>软件名称变更为EMU-Tools</li>
-            <li><strong>页面重构：</strong>重新构建展示页面</li>
-            <li><strong>功能调整：</strong>取消通过版本号检测形式，改为直接通过检测最新版并提供下载</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.2</h3>
-          <ul>
-            <li><strong>新增功能：</strong>增加页面样式</li>
-            <li><strong>性能提升：</strong>加入代理下载服务，优化下载速度</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.1</h3>
-          <ul>
-            <li><strong>新增功能：</strong>增加了固件检测下载功能</li>
-          </ul>
-        </li>
-        <li>
-          <h3>版本号：1.0.0</h3>
-          <ul>
-            <li><strong>新增功能：</strong>完成了基本的应用功能</li>
-            <li><strong>首次发布：</strong>Yuzu-EA 版本检测和下载页面</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-  <script src="./js/update.js"></script>
+    <form id="app">
+        <div class="menu">
+            <a class="a" href="/" target="_parent" title="EMU-Tool 模拟器在线更新工具">
+                <div class="menu-title">
+                    <img src="./images/logo.png" height="30px" width="30px">
+                    <span>EMU-Tools</span>
+                </div>
+            </a>
+            <ul class="menu-list">
+                <li><a class="second" href="/" target="_parent">yuzu模拟器</a></li>
+                <li><a class="second" href="./ryujinx.html" target="_parent">Ryujinx模拟器</a></li>
+                <li><a class="second" href="./firmware.html" target="_parent">固件下载</a></li>
+                <li><a class="second" href="./tools.html" target="_parent">其他工具</a></li>
+                <li><a class="second" href="./about.html" target="_parent">工具简介</a></li>
+            </ul>
+            <p style="text-align: center;margin: 20px 50px;"><a style="color: rgb(70, 70, 70);" href="./update.html">v1.0.3.4</a></p>
+        </div>
+        <div class="main">
+            <div id="log-update"></div>
+        </div>
+        <!-- 通过AJAX获取php网站获取到的统计数据，目前有一个跨域和没有https的小问题 -->
+        <div id="data-container">
+            <!-- -这里将显示 AJAX 请求返回的数据- -->
+        </div>
+    </form>
+    <script src="./js/main.js"></script>
+    <script src="./js/update.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
