@@ -161,3 +161,52 @@ function toggleTab(tabName) {
     downBtnEls[i].setAttribute("disabled", "disabled");
   }
 }
+
+
+//获取yuzu更新日志
+function get_yuzu_commit_logs() {
+	fetch('https://api.github.com/repos/yuzu-emu/yuzu/commits')
+	.then(function(response) {
+		if (!response.ok) {
+			throw new Error('Network response was not ok');
+		}
+		return response.json();
+	})
+	.then(function(commits) {
+		let markdown = '<h1>Recent commits of yuzu-emu/yuzu</h1>';
+		let last_date = '';
+		commits.forEach(function(commit_info) {
+			let commit_date = commit_info.commit.author.date.split('T')[0];
+			if (last_date !== commit_date) {
+				markdown += `<h2>${commit_date}</h2>`;
+				last_date = commit_date;
+			}
+			let lines = commit_info.commit.message.split('\n');
+			if (lines.length > 1) {
+				let content = lines.slice(1).join('\n');
+				markdown += `<details><summary>${lines[0]}</summary>`;
+				markdown += `<p>${content}</p></details>`;
+			} else {
+				markdown += `<p>- ${lines[0]}</p>`;
+			}
+		});
+		document.querySelector('#commits').innerHTML = markdown;
+	})
+	.catch(function(error) {
+		console.error('Error:', error);
+	});
+}
+
+get_yuzu_commit_logs();
+
+
+
+
+// //获取访问数据（因为跨域和SSL问题，暂不能实现）
+// $(document).ready(function () {
+//     // 发送 AJAX GET 请求获取 PHP 文件返回的数据
+//     $.get("http://count.ccccocccc.cc/count.php", function (data) {
+//         // 将返回的数据插入到 HTML 中
+//         $("#data-container").html(data);
+//     });
+// });
