@@ -1,7 +1,7 @@
 // 定义一个函数，用于从 GitHub 加载 Ryujinx 的更新日志 
 function loadRyujinxChangeLog() {
 	// 使用 fetch 方法获取日志文件的原始文本数据
-	return fetch('https://raw.githubusercontent.com/wiki/Ryujinx/Ryujinx/Changelog.md')
+	return fetch('https://ghproxy.com/https://raw.githubusercontent.com/wiki/Ryujinx/Ryujinx/Changelog.md')
 		.then(res => res.text()) // 将获取到的结果解析成文本格式
 		.then(data => {
 			// 使用 Showdown 库将 Markdown 格式的文本转换成 HTML 格式
