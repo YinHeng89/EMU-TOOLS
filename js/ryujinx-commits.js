@@ -7,7 +7,12 @@ function loadRyujinxChangeLog() {
 			// 使用 Showdown 库将 Markdown 格式的文本转换成 HTML 格式
 			const converter = new showdown.Converter()
 			// 将转换后的 HTML 文本进行修改，为其中的 a 标签添加 target="_blank" 属性
-			const logHtml = converter.makeHtml(data).replace(/(<a href="[^"]*")>/g, '$1 target="_blank">');
+			const logHtml = converter.makeHtml(data)
+			.replace(/(<a href="[^"]*")>/g, '$1 target="_blank">')
+			.replace(/(Ryujinx Changelog)/g, 'Ryujinx 主线版本更新日志')
+			.replace(/(Fixed:)/g, '修复内容：')
+			.replace(/(For 1\.0\.x releases, see \<a href=\"https:\/\/github\.com\/Ryujinx\/Ryujinx\/wiki\/Older-Changelog\" target=\"_blank\"\>here<\/a>\.)/g, '对于 1.0.x 版本，请参见<a href=\"https:\/\/github\.com\/Ryujinx\/Ryujinx\/wiki\/Older-Changelog\" target=\"_blank\"\>此处<\/a>。：')
+			.replace(/(All updates to the Ryujinx official master build will be documented in this file.)/g, 'Ryujinx 官方主版本的所有更新都将记录在此文件中。');
 			// 将转换后的 HTML 文本返回到函数外部，并作为 Promise 的 resolve 值
 			return logHtml;
 		})
