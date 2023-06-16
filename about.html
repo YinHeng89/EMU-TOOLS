@@ -56,7 +56,12 @@
             <p style="color: rgb(190, 190, 190);position: absolute;bottom: 50px;margin-bottom: 20px;">
                 本工具在ChatGPT的协助下进行开发和构建，所有信息和数据来源于<a href="https://github.com/" target="_blank">GitHub</a>及互联网</p>
         </div>
+        <!-- 通过AJAX获取php网站获取到的统计数据，目前有一个跨域和没有https的小问题 -->
+        <div style="color: #ddd;" id="data-container">
+            <!-- -这里将显示 AJAX 请求返回的数据- -->
+        </div>
     </form>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
