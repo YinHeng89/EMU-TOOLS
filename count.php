@@ -1,5 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: https//emu-tools.com");
+header("Access-Control-Allow-Origin: https://emu-tools.com");
+header("Access-Control-Allow-Credentials: true");
 date_default_timezone_set('Asia/Shanghai');
 
 // 记录访问 IP 地址的数量并显示当前访问 IP 地址
