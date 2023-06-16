@@ -13,11 +13,11 @@ if ('serviceWorker' in navigator) {
     })
 }
 
-// //获取访问数据（因为跨域和SSL问题，暂不能实现）
-// $(document).ready(function () {
-//     // 发送 AJAX GET 请求获取 PHP 文件返回的数据
-//     $.get("http://count.lovestoblog.com/count.php", function (data) {
-//         // 将返回的数据插入到 HTML 中
-//         $("#data-container").html(data);
-//     });
-// });
+//获取访问数据（因为跨域和SSL问题，暂不能实现）
+$(document).ready(function () {
+    // 发送 AJAX GET 请求获取 PHP 文件返回的数据
+    $.get("https://count.emu-tools.com/tools/count.php", function (data) {
+        // 将返回的数据插入到 HTML 中
+        $("#data-container").html(data);
+    });
+});

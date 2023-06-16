@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Shanghai');
 $user_ip = $_SERVER["REMOTE_ADDR"];
 
 // 连接到 MySQL 数据库
-$conn = mysqli_connect("sql207.epizy.com", "epiz_34337531", "Cd3hexOBe0osvu", "epiz_34337531_statistics");
+$conn = mysqli_connect("localhost", "root", "5PC2yhv9", "emutools");
 if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 }
