@@ -47,7 +47,7 @@ async function downloadLatestAVA(os) {
   // 从 API 响应中获取下载链接
   const osEm = {
     Windows: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url.replace(/(.*)\/(.*\.zip)/g, '$1/test-ava-$2')}`,
-    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url.replace(/(.*)\/(.*\.zip)/g, '$1/test-ava-$2')}`
+    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.startsWith("test-ava-")).browser_download_url.replace(/(.*)\/(.*\.zip)/g, '$1/test-ava-$2')}`
   };
 
   // 打开新窗口下载文件
@@ -103,7 +103,7 @@ async function downloadLatest(os) {
   // 从 API 响应中获取下载链接
   const osEm = {
     Windows: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url}`,
-    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.startsWith("test-ava-").endsWith('.tar.gz')).browser_download_url}`
+    Linux: `https://ghproxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url}`
   };
 
   // 打开新窗口下载文件
