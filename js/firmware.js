@@ -23,8 +23,7 @@
             if (version) {
               const release = data.find(release => release.tag_name === version);
               const asset = release.assets[0];
-              const proxyUrl = 'https://gh-proxy.com/';
-              const link = proxyUrl + asset.browser_download_url;
+              const link = asset.browser_download_url;
               window.open(link);
             }
           });
