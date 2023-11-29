@@ -46,8 +46,8 @@ async function downloadLatestAVA(os) {
 
   // 从 API 响应中获取下载链接
   const osEm = {
-    Windows: `https://gh-proxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url.replace(/(.*)\/(.*\.zip)/g, '$1/test-ava-$2')}`,
-    Linux: `https://gh-proxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url.replace(/(.*)\/(.*\.tar.gz)/g, '$1/test-ava-$2')}`
+    Windows: `latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url.replace(/(.*)\/(.*\.zip)/g, '$1/test-ava-$2')`,
+    Linux: `latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url.replace(/(.*)\/(.*\.tar.gz)/g, '$1/test-ava-$2')`
   };
 
   // 打开新窗口下载文件
