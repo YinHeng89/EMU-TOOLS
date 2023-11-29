@@ -46,8 +46,8 @@ async function downloadLatest(os) {
 
   // 从 API 响应中获取下载链接
   const osEm = {
-    Windows: `latestRelease.assets.find(asset => asset.name.endsWith('.zip') && !asset.name.endsWith('-debugsymbols.zip')).browser_download_url`,
-    Linux: `latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url`,
+    Windows: latestRelease.assets.find(asset => asset.name.endsWith('.zip') && !asset.name.endsWith('-debugsymbols.zip')).browser_download_url,
+    Linux: latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url,
     Android: 'https://play.google.com/store/apps/details?id=org.yuzu.yuzu_emu'
   };
 
@@ -105,8 +105,8 @@ async function downloadLatestEA(os) {
 
   // 从 API 响应中获取下载链接
   const osEm = {
-    Windows: `latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url`,
-    Linux: `latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url`,
+    Windows: latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url,
+    Linux: latestRelease.assets.find(asset => asset.name.endsWith('.AppImage')).browser_download_url,
     Android: `https://play.google.com/store/apps/details?id=org.yuzu.yuzu_emu.ea`
   };
 
