@@ -120,7 +120,7 @@ function downloadfirmware() {
     .then(response => {
       const asset = response.data.assets[0];
       const version = response.data.tag_name;
-      const downloadUrl = `asset.browser_download_url`;
+      const downloadUrl = asset.browser_download_url;
 
       Swal.fire({
         icon: 'success',
