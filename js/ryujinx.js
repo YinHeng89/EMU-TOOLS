@@ -102,8 +102,8 @@ async function downloadLatest(os) {
 
   // 从 API 响应中获取下载链接
   const osEm = {
-    Windows: `https://gh-proxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url}`,
-    Linux: `https://gh-proxy.com/${latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url}`
+    Windows: `latestRelease.assets.find(asset => asset.name.endsWith('.zip')).browser_download_url`,
+    Linux: `latestRelease.assets.find(asset => asset.name.endsWith('.tar.gz')).browser_download_url`
   };
 
   // 打开新窗口下载文件
@@ -129,7 +129,7 @@ function downloadfirmware() {
     .then(response => {
       const asset = response.data.assets[0];
       const version = response.data.tag_name;
-      const downloadUrl = `https://gh-proxy.com/${asset.browser_download_url}`;
+      const downloadUrl = `asset.browser_download_url`;
 
       Swal.fire({
         icon: 'success',
